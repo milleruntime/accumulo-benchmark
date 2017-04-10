@@ -34,18 +34,22 @@ package org.sample;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.concurrent.atomic.AtomicLong;
+
 import org.apache.accumulo.core.client.Scanner;
 import org.apache.accumulo.core.client.rfile.RFile;
 import org.apache.accumulo.core.client.sample.SamplerConfiguration;
 import org.apache.accumulo.core.conf.AccumuloConfiguration;
+import org.apache.accumulo.core.data.ArrayByteSequence;
 import org.apache.accumulo.core.data.ByteSequence;
 import org.apache.accumulo.core.data.Column;
 import org.apache.accumulo.core.data.Key;
@@ -56,12 +60,8 @@ import org.apache.accumulo.core.iterators.IteratorEnvironment;
 import org.apache.accumulo.core.iterators.IteratorUtil;
 import org.apache.accumulo.core.iterators.SortedKeyValueIterator;
 import org.apache.accumulo.core.iterators.SortedMapIterator;
-import org.apache.accumulo.core.iterators.system.ColumnFamilySkippingIterator;
-import org.apache.accumulo.core.iterators.system.ColumnQualifierFilter;
-import org.apache.accumulo.core.iterators.system.DeletingIterator;
 import org.apache.accumulo.core.iterators.system.MultiIterator;
 import org.apache.accumulo.core.iterators.system.StatsIterator;
-import org.apache.accumulo.core.iterators.system.VisibilityFilter;
 import org.apache.accumulo.core.security.Authorizations;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -72,14 +72,18 @@ import org.openjdk.jmh.annotations.Warmup;
 
 public class MyBenchmark {
 
-  private static final String testFileName = "RfileBenchmarkTest.rf";
+  static final String testFileName = "RfileBenchmarkTest.rf";
   private static final Collection<ByteSequence> EMPTY_COL_FAMS = new ArrayList<>();
+  private static final Collection<ByteSequence> CF1S = new HashSet<>(Arrays.asList(new ArrayByteSequence("testCF1")));
+  private static final Collection<ByteSequence> CF2S = new HashSet<>(Arrays.asList(new ArrayByteSequence("testCF2")));
 
   @State(Scope.Benchmark)
   public static class BenchmarkState {
     File testFile = new File(testFileName);
     SortedMap<Key,Value> sortedMap = null;
     SortedKeyValueIterator<Key,Value> iterStack = null;
+    SortedKeyValueIterator<Key,Value> colIterStack = null;
+    SortedKeyValueIterator<Key,Value> emptyAuthsIterStack = null;
 
     public BenchmarkState() {
       AtomicLong scannedCount = new AtomicLong();
@@ -90,11 +94,22 @@ public class MyBenchmark {
       AccumuloConfiguration accuConf = AccumuloConfiguration.getDefaultConfiguration();
 
       System.out.println("Reading rfile into map and creating Iterator stack");
-      try (Scanner scanner = RFile.newScanner().from(testFile.getAbsolutePath()).withFileSystem(FileSystem.getLocal(new Configuration())).build()){
+      try (Scanner scanner = RFile.newScanner().from(testFile.getAbsolutePath()).withFileSystem(FileSystem.getLocal(new Configuration()))
+          .withoutSystemIterators().build()) {
         sortedMap = toMap(scanner);
         List<SortedKeyValueIterator<Key,Value>> sourceIters = new ArrayList<>();
         sourceIters.add(new SortedMapIterator(sortedMap));
-        iterStack = createIteratorStack(sourceIters, scannedCount, seekCount, extent, accuConf);
+        
+        Authorizations auths = new Authorizations("CHUNKY", "CREAMY");
+
+        iterStack = createIteratorStack(sourceIters, scannedCount, seekCount, extent, accuConf, auths, Collections.emptySet());
+
+        HashSet<Column> columns = new HashSet<>();
+        columns.add(new Column("testCF2".getBytes(), "testCQ".getBytes(), null));
+        colIterStack = createIteratorStack(sourceIters, scannedCount, seekCount, extent, accuConf, auths, columns);
+
+        emptyAuthsIterStack = createIteratorStack(sourceIters, scannedCount, seekCount, extent, accuConf, Authorizations.EMPTY, Collections.emptySet());
+        
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -110,118 +125,123 @@ public class MyBenchmark {
     return map;
   }
 
-  /**
-   * Methods used to create Test file
-   */
-  /*public String colStr(int c) {
-    return String.format("%08x", c);
-  }
-  @Benchmark
-  public void initTestFile() {
-    try {
-      System.out.println("Populating RFile");
-      File testFile = testFile = new File(testFileName);
-      RFileWriter writer = RFile.newWriter().to(testFile.getAbsolutePath()).withFileSystem(FileSystem.getLocal(new Configuration())).build();
-      for (int i = 0; i < 1_000_000; i++) {
-        Key k1 = new Key("mytestrow" + colStr(i), "testCF1");
-        Key k2 = new Key("mytestrow" + colStr(i), "testCF2", "testCQ");
-        writer.append(k1, new Value((k1.hashCode() + "").getBytes()));
-        writer.append(k1, new Value((k2.hashCode() + "").getBytes()));
-      }
-      writer.close();
-      //if(!new File(testFileName).delete() || !new File(testFileNameCRC).delete()) {
-        //throw new IOException("Couldn't remove testFile " + testFileName);
-      //}
-      //scanner = RFile.newScanner().from(testFile.getAbsolutePath()).withFileSystem(localFs).build();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }*/
-
-  private static SortedKeyValueIterator<Key,Value> createIteratorStack(List<SortedKeyValueIterator<Key,Value>> sources, AtomicLong scannedCount, AtomicLong seekCount, KeyExtent extent, AccumuloConfiguration accuConf) throws IOException {
+  private static SortedKeyValueIterator<Key,Value> createIteratorStack(List<SortedKeyValueIterator<Key,Value>> sources, AtomicLong scannedCount,
+      AtomicLong seekCount, KeyExtent extent, AccumuloConfiguration accuConf, Authorizations auths, Set<Column> columns) throws IOException {
 
     MultiIterator multiIter = new MultiIterator(sources, extent);
     IteratorEnvironment iterEnv = new IteratorEnvironment() {
       public SortedKeyValueIterator<Key,Value> reserveMapFileReader(String mapFileName) throws IOException {
         throw new UnsupportedOperationException();
       }
+
       public void registerSideChannel(SortedKeyValueIterator<Key,Value> iter) {
         throw new UnsupportedOperationException();
       }
+
       @Override
       public Authorizations getAuthorizations() {
         return null;
       }
+
       @Override
       public IteratorEnvironment cloneWithSamplingEnabled() {
         return null;
       }
+
       @Override
       public boolean isSamplingEnabled() {
         return false;
       }
+
       @Override
       public SamplerConfiguration getSamplerConfiguration() {
         return null;
       }
+
       public boolean isFullMajorCompaction() {
         return false;
       }
+
       public IteratorUtil.IteratorScope getIteratorScope() {
         return IteratorUtil.IteratorScope.scan;
       }
+
       public AccumuloConfiguration getConfig() {
         return null;
       }
     };
 
     StatsIterator statsIterator = new StatsIterator(multiIter, seekCount, scannedCount);
-    DeletingIterator delIter = new DeletingIterator(statsIterator, false);
-    ColumnFamilySkippingIterator cfsi = new ColumnFamilySkippingIterator(delIter);
-    ColumnQualifierFilter colFilter = new ColumnQualifierFilter(cfsi, Collections.emptySet());
-    VisibilityFilter visFilter = new VisibilityFilter(colFilter, new Authorizations(), new byte[0]);
+    SortedKeyValueIterator<Key,Value> systemIters = IteratorUtil.setupSystemScanIterators(statsIterator, columns, auths,
+        new byte[0]);
 
-    return IteratorUtil.loadIterators(IteratorUtil.IteratorScope.scan, visFilter, extent, accuConf, Collections.emptyList(), Collections.emptyMap(), iterEnv);
+    return IteratorUtil.loadIterators(IteratorUtil.IteratorScope.scan, systemIters, extent, accuConf, Collections.emptyList(), Collections.emptyMap(), iterEnv);
   }
 
-  private ColumnQualifierFilter createCQF(SortedMap<Key,Value> map, Range range) throws IOException {
-    SortedMapIterator smi = new SortedMapIterator(map);
-    HashSet<Column> columns = new HashSet<>();
-    columns.add(new Column("testCF1".getBytes(), null, null));
-    ColumnQualifierFilter cf = new ColumnQualifierFilter(smi, columns);
-    return cf;
+  private static void readAll(SortedKeyValueIterator<Key,Value> iter, int expected) throws IOException {
+    // int count = 0;
+    while (iter.hasTop()) {
+      iter.next();
+      //count++;
+    }
+
+    //if(expected != count) { throw new IllegalArgumentException(expected + " != "+count); }
+  }
+
+  @Benchmark
+  @Warmup(iterations = 5)
+  public void seekTestWithCfFilter10(BenchmarkState state) throws IOException {
+    Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00016610"));
+    state.iterStack.seek(range, CF1S, true);
+    readAll(state.iterStack, 16);
+  }
+
+  @Benchmark
+  @Warmup(iterations = 5)
+  public void seekTestWithCfFilter1000(BenchmarkState state) throws IOException {
+    Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00017600"));
+    state.iterStack.seek(range, CF1S, true);
+    readAll(state.iterStack, 4096);
   }
 
   @Benchmark
   @Warmup(iterations = 5)
   public void seekTestWithCQFilter10(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00016610"));
-    ColumnQualifierFilter cf = createCQF(state.sortedMap, range);
-    cf.seek(range, EMPTY_COL_FAMS, false);
-    while(cf.hasTop()) {
-      cf.next();
-    }
+    state.colIterStack.seek(range, CF2S, true);
+    readAll(state.colIterStack, 16);
   }
 
   @Benchmark
   @Warmup(iterations = 5)
   public void seekTestWithCQFilter1000(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00017600"));
-    ColumnQualifierFilter cf = createCQF(state.sortedMap, range);
-    cf.seek(range, EMPTY_COL_FAMS, false);
-    while(cf.hasTop()) {
-      cf.next();
-    }
+    state.colIterStack.seek(range, CF2S, true);
+    readAll(state.colIterStack, 4096);
   }
 
+  @Benchmark
+  @Warmup(iterations = 5)
+  public void seekTestWithEmptyAuths10(BenchmarkState state) throws IOException {
+    Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00016610"));
+    state.emptyAuthsIterStack.seek(range, EMPTY_COL_FAMS, false);
+    readAll(state.emptyAuthsIterStack, 8);
+  }
+
+  @Benchmark
+  @Warmup(iterations = 5)
+  public void seekTestWithEmptyAuths1000(BenchmarkState state) throws IOException {
+    Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00017600"));
+    state.emptyAuthsIterStack.seek(range, EMPTY_COL_FAMS, false);
+    readAll(state.emptyAuthsIterStack, 2048);
+  }
+  
   @Benchmark
   @Warmup(iterations = 5)
   public void seekAllSystemIters10(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00016610"));
     state.iterStack.seek(range, EMPTY_COL_FAMS, false);
-    while(state.iterStack.hasTop()) {
-      state.iterStack.next();
-    }
+    readAll(state.iterStack, 32);
   }
 
   @Benchmark
@@ -229,9 +249,7 @@ public class MyBenchmark {
   public void seekAllSystemIters1000(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00017600"));
     state.iterStack.seek(range, EMPTY_COL_FAMS, false);
-    while(state.iterStack.hasTop()) {
-      state.iterStack.next();
-    }
+    readAll(state.iterStack, 8192);
   }
 
 }

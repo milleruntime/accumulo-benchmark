@@ -20,7 +20,8 @@ import org.openjdk.jmh.annotations.Warmup;
  */
 public class BenchmarkIT {
 
-  @State(Scope.Benchmark) public static class BenchmarkState {
+  //@State(Scope.Benchmark) 
+  public static class BenchmarkState {
     String instanceName = "uno";
     String zooServers = "localhost";
     Instance inst = null;
@@ -41,8 +42,8 @@ public class BenchmarkIT {
     }
   }
 
-  @Warmup(iterations = 5)
-  @Benchmark
+  //@Warmup(iterations = 5)
+  //@Benchmark
   public void scanTest (BenchmarkState state){
     state.scan.setRange(new Range());
     for(Map.Entry<Key, Value> entry : state.scan) {
