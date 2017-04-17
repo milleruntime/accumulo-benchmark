@@ -23,7 +23,9 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 
 /**
- * Test will only work with local Uno installed an running
+ * Test will only work with local Uno installed and running
+ * Once Uno is running, then make sure to setauths:
+ * $ACCUMULO_HOME/bin/accumulo shell -u root -p secret -e "setauths -u root -s PUBLIC"
  */
 public class UnoBenchmarkIT {
   public static final String TEST_TABLE = "mytest";
@@ -86,8 +88,8 @@ public class UnoBenchmarkIT {
   /**
    * Test will only work with local Uno installed an running
    */
-  //@Warmup(iterations = 5)
-  //@Benchmark
+  @Warmup(iterations = 5)
+  @Benchmark
   public void scanTest (BenchmarkState state){
     state.scan.setRange(new Range(new Key("mytestrow00016600"), new Key("mytestrow00017600")));
     for(Map.Entry<Key, Value> entry : state.scan) {

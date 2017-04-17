@@ -1,0 +1,62 @@
+#!/bin/bash
+JMH_CMD='java -jar target/benchmarks.jar '
+
+usage() {
+  echo "$0 [-g|--generate] [-i|--iter <num>] [-p|--print] [-t|--test <test>]"
+  echo "Options:"
+  echo "-t|--test <test>    Test to run in JMH"
+  echo "-g|--generate    Generate RFile for testing"
+  echo "-i|--iter <num>    Set the number of test iterations"
+  echo "-p|--print     Print all of the available tests"
+  exit
+}
+
+if [[ -z "$@" ]]; then
+  usage
+fi
+
+while [[ $# -gt 0 ]]
+do
+case $1 in
+    -g|--generate)
+    GENERATE=YES
+    ;;
+    -p|--print)
+    PRINT_TESTS=YES
+    ;;
+    -i|--iter)
+    ITERATIONS="$2"
+    shift 
+    ;;
+    -t|--test)
+    TEST=$2 
+    shift
+    ;;
+    *)
+    echo "Unknown option: $1"
+    ;;
+esac
+shift
+done
+
+if [[ -n "$PRINT_TESTS" ]]; then
+  java -cp target/benchmarks.jar org.sample.PrintTests
+  GOOD=YES
+fi
+if [[ -n "$GENERATE" ]]; then
+  java -cp target/benchmarks.jar org.sample.Generate
+  GOOD=YES
+fi
+
+if [[ -n $TEST ]]; then
+  if [[ -n "$ITERATIONS" ]]; then
+     java -jar target/benchmarks.jar -f 1 -i "$ITERATIONS" "$TEST"
+     GOOD=YES
+  else
+     java -jar target/benchmarks.jar -f 1 "$TEST"
+     GOOD=YES
+  fi
+fi
+if [[ -z "$GOOD" ]]; then
+  usage
+fi

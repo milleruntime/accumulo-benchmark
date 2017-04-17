@@ -10,13 +10,16 @@ mvn clean package
 ## Generate data
 
 ```bash
-java -cp target/benchmarks.jar org.sample.Generate
-
+./run -g
 ```
+
 ## Run test
 
-
 ```bash
-java -jar target/benchmarks.jar -i 100 -f 1
+./run -t <test-name>
+```
 
+## Print all benchmark tests
+```bash
+./run -p
 ```
