@@ -68,11 +68,16 @@ THE POSSIBILITY OF SUCH DAMAGE.
             <artifactId>jmh-core</artifactId>
             <version>${jmh.version}</version>
         </dependency>
-<dependency>
+     <dependency>
         <groupId>org.apache.accumulo</groupId>
         <artifactId>accumulo-core</artifactId>
         <version>${accumulo.version}</version>
       </dependency>
+        <dependency>
+            <groupId>org.apache.accumulo</groupId>
+            <artifactId>accumulo-tserver</artifactId>
+            <version>${accumulo.version}</version>
+        </dependency>
    <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-client</artifactId>

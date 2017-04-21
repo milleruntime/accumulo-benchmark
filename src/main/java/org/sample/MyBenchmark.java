@@ -72,10 +72,10 @@ import org.openjdk.jmh.annotations.Warmup;
 
 public class MyBenchmark {
 
-  static final String testFileName = "RfileBenchmarkTest.rf";
-  private static final Collection<ByteSequence> EMPTY_COL_FAMS = new ArrayList<>();
-  private static final Collection<ByteSequence> CF1S = new HashSet<>(Arrays.asList(new ArrayByteSequence("testCF1")));
-  private static final Collection<ByteSequence> CF2S = new HashSet<>(Arrays.asList(new ArrayByteSequence("testCF2")));
+  public static final String testFileName = "RfileBenchmarkTest.rf";
+  public static final Collection<ByteSequence> EMPTY_COL_FAMS = new ArrayList<>();
+  public static final Collection<ByteSequence> CF1S = new HashSet<>(Arrays.asList(new ArrayByteSequence("testCF1")));
+  public static final Collection<ByteSequence> CF2S = new HashSet<>(Arrays.asList(new ArrayByteSequence("testCF2")));
 
   @State(Scope.Benchmark)
   public static class BenchmarkState {
@@ -178,7 +178,7 @@ public class MyBenchmark {
     return IteratorUtil.loadIterators(IteratorUtil.IteratorScope.scan, systemIters, extent, accuConf, Collections.emptyList(), Collections.emptyMap(), iterEnv);
   }
 
-  private static void readAll(SortedKeyValueIterator<Key,Value> iter, int expected) throws IOException {
+  public static void readAll(SortedKeyValueIterator<Key,Value> iter, int expected) throws IOException {
     // int count = 0;
     while (iter.hasTop()) {
       iter.next();
