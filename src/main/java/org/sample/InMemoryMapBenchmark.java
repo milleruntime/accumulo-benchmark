@@ -33,8 +33,8 @@ public class InMemoryMapBenchmark {
   @State(Scope.Benchmark)
   public static class BenchmarkState {
     File testFile = new File(MyBenchmark.testFileName);
-    InMemoryMap emptyInMemoryMap = null;
     InMemoryMap inMemoryMap = null;
+    InMemoryMap.MemoryIterator memoryIterator = null;
     SortedMap<Key,Value> sortedMap = null;
 
     public BenchmarkState() {
@@ -44,7 +44,7 @@ public class InMemoryMapBenchmark {
         sortedMap = MyBenchmark.toMap(scanner);
         inMemoryMap = newInMemoryMap(false, "/tmp");
         inMemoryMap.mutate(toMutations(scanner));
-        emptyInMemoryMap = newInMemoryMap(false, "/tmp");
+        memoryIterator = inMemoryMap.skvIterator(null);
 
       } catch (Exception e) {
         e.printStackTrace();
@@ -72,34 +72,21 @@ public class InMemoryMapBenchmark {
     return mutations;
   }
 
-  //TODO: Test not closing InMemoryMap - weird stuff happened before I added close at the end of the test
   @Benchmark
-  @Warmup(iterations = 5)
-  public void testEmptyInMemoryMap(BenchmarkState state) throws IOException {
-    Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00017600"));
-    InMemoryMap.MemoryIterator memoryIterator = state.emptyInMemoryMap.skvIterator(null);
-    memoryIterator.seek(range, MyBenchmark.EMPTY_COL_FAMS, false);
-    MyBenchmark.readAll(memoryIterator, 8192);
-    memoryIterator.close();
-  }
-
-  @Benchmark
-  @Warmup(iterations = 5)
+  @Warmup(iterations = 10)
   public void testInMemoryMap10(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00016610"));
-    InMemoryMap.MemoryIterator memoryIterator = state.inMemoryMap.skvIterator(null);
-    memoryIterator.seek(range, MyBenchmark.EMPTY_COL_FAMS, false);
-    MyBenchmark.readAll(memoryIterator, 8192);
-    memoryIterator.close();
+    state.memoryIterator.seek(range, MyBenchmark.EMPTY_COL_FAMS, false);
+    MyBenchmark.readAll(state.memoryIterator, 8192);
+    //memoryIterator.close();
   }
 
   @Benchmark
-  @Warmup(iterations = 5)
+  @Warmup(iterations = 10)
   public void testInMemoryMap1000(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00017600"));
-    InMemoryMap.MemoryIterator memoryIterator = state.inMemoryMap.skvIterator(null);
-    memoryIterator.seek(range, MyBenchmark.EMPTY_COL_FAMS, false);
-    MyBenchmark.readAll(memoryIterator, 8192);
-    memoryIterator.close();
+    state.memoryIterator.seek(range, MyBenchmark.EMPTY_COL_FAMS, false);
+    MyBenchmark.readAll(state.memoryIterator, 8192);
+    //memoryIterator.close();
   }
 }
