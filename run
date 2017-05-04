@@ -1,5 +1,6 @@
 #!/bin/bash
-JMH_CMD='java -jar target/benchmarks.jar '
+JMH_CMD="java -jar target/benchmarks.jar "
+OUT_FILE="results-`date +%F_%H%M%S`"
 
 usage() {
   echo "$0 [-g|--generate] [-i|--iter <num>] [-p|--print] [-t|--test <test>]"
@@ -41,22 +42,24 @@ done
 
 if [[ -n "$PRINT_TESTS" ]]; then
   java -cp target/benchmarks.jar org.sample.PrintTests
-  GOOD=YES
+  exit 0
 fi
 if [[ -n "$GENERATE" ]]; then
   java -cp target/benchmarks.jar org.sample.Generate
-  GOOD=YES
+  exit 0
 fi
 
 if [[ -n $TEST ]]; then
+  uname -a > results/$OUT_FILE
   if [[ -n "$ITERATIONS" ]]; then
-     java -jar target/benchmarks.jar -f 1 -i "$ITERATIONS" "$TEST"
+     $JMH_CMD -f 1 -i "$ITERATIONS" "$TEST" | tee -a ./results/$OUT_FILE
      GOOD=YES
   else
-     java -jar target/benchmarks.jar -f 1 "$TEST"
+     $JMH_CMD -f 1 "$TEST" | tee -a ./results/$OUT_FILE
      GOOD=YES
   fi
 fi
+
 if [[ -z "$GOOD" ]]; then
   usage
 fi
