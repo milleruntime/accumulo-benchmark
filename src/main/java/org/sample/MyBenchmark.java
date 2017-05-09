@@ -97,12 +97,8 @@ public class MyBenchmark {
       extent.setEndRow(null);
       AccumuloConfiguration accuConf = AccumuloConfiguration.getDefaultConfiguration();
 
-      System.out.println("Reading rfile into map and creating Iterator stack");
-//      try (Scanner scanner = RFile.newScanner().from(testFile.getAbsolutePath()).withFileSystem(FileSystem.getLocal(new Configuration()))
-//          .withoutSystemIterators().build()) {
-      try {
-        RFileOperations ops = new RFileOperations();
 
+        try {
         Map<String,Map<String,String>> emptyMap = Collections.emptyMap();
         sortedMap = Generate.populateMap();
         List<SortedKeyValueIterator<Key,Value>> sourceIters = new ArrayList<>();
