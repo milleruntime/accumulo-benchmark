@@ -20,33 +20,33 @@ import org.openjdk.jmh.annotations.Warmup;
 public class VersioningIterBenchmark {
   @State(Scope.Benchmark)
   public static class BenchmarkState {
-    
+
     SortedKeyValueIterator<Key,Value> iterStack = null;
-   
+
     public BenchmarkState() {
       Random rand = new Random(42);
-      
+
       TreeMap<Key, Value> tmap = new TreeMap<>();
-      
+
       int v = 0;
-      
+
       for(int r = 0; r < 100; r++) {
-        
+
         String row = String.format("%09d", rand.nextInt(1_000_000_000));
         for(int q = 0; q < 3; q++) {
           String qual = String.format("%06d", rand.nextInt(1_000_000));
           int stamps = rand.nextInt(19)+1;
           for(int t = 0; t< stamps; t++) {
             Key k = new Key(row, "fam",qual, rand.nextInt(1_000_000_000));
-            Value val = new Value(v++ + "");
-            
+            Value val = new Value((v++ + "").getBytes());
+
             tmap.put(k, val);
           }
         }
       }
-      
+
       System.out.println("tmap.size : "+tmap.size());
-      
+
       SortedMapIterator smi = new SortedMapIterator(tmap);
       VersioningIterator vi = new VersioningIterator();
       try {
@@ -54,20 +54,20 @@ public class VersioningIterBenchmark {
       } catch (IOException e) {
         throw new UncheckedIOException(e);
       }
-      
+
       iterStack = vi;
     }
   }
-  
+
   @Benchmark
   @Warmup(iterations = 5)
   public void scanAll(BenchmarkState state) throws IOException {
     SortedKeyValueIterator<Key,Value> iter = state.iterStack;
     iter.seek(new Range(), Collections.emptySet(), false);
-    
+
     while(iter.hasTop()) {
       iter.next();
     }
   }
-  
+
 }

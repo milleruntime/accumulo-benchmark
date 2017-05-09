@@ -45,9 +45,9 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.accumulo.core.client.Scanner;
-import org.apache.accumulo.core.client.rfile.RFile;
-import org.apache.accumulo.core.client.sample.SamplerConfiguration;
+import org.apache.accumulo.core.file.rfile.RFileOperations;
+import org.apache.accumulo.core.file.FileSKVIterator;
+//import org.apache.accumulo.core.client.sample.SamplerConfiguration;
 import org.apache.accumulo.core.conf.AccumuloConfiguration;
 import org.apache.accumulo.core.data.ArrayByteSequence;
 import org.apache.accumulo.core.data.ByteSequence;
@@ -69,6 +69,10 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
+import org.apache.accumulo.core.iterators.system.ColumnFamilySkippingIterator;
+import org.apache.accumulo.core.iterators.system.ColumnQualifierFilter;
+import org.apache.accumulo.core.iterators.system.DeletingIterator;
+import org.apache.accumulo.core.iterators.system.VisibilityFilter;
 
 public class MyBenchmark {
 
@@ -94,9 +98,13 @@ public class MyBenchmark {
       AccumuloConfiguration accuConf = AccumuloConfiguration.getDefaultConfiguration();
 
       System.out.println("Reading rfile into map and creating Iterator stack");
-      try (Scanner scanner = RFile.newScanner().from(testFile.getAbsolutePath()).withFileSystem(FileSystem.getLocal(new Configuration()))
-          .withoutSystemIterators().build()) {
-        sortedMap = toMap(scanner);
+//      try (Scanner scanner = RFile.newScanner().from(testFile.getAbsolutePath()).withFileSystem(FileSystem.getLocal(new Configuration()))
+//          .withoutSystemIterators().build()) {
+      try {
+        RFileOperations ops = new RFileOperations();
+
+        Map<String,Map<String,String>> emptyMap = Collections.emptyMap();
+        sortedMap = Generate.populateMap();
         List<SortedKeyValueIterator<Key,Value>> sourceIters = new ArrayList<>();
         sourceIters.add(new SortedMapIterator(sortedMap));
         
@@ -116,14 +124,6 @@ public class MyBenchmark {
     }
   }
 
-  public static SortedMap<Key,Value> toMap(Scanner scanner) {
-    TreeMap<Key,Value> map = new TreeMap<>();
-    for (Map.Entry<Key,Value> entry : scanner) {
-      map.put(entry.getKey(), entry.getValue());
-    }
-    System.out.println("Read " + testFileName + " First Key = " + map.firstKey());
-    return map;
-  }
 
   private static SortedKeyValueIterator<Key,Value> createIteratorStack(List<SortedKeyValueIterator<Key,Value>> sources, AtomicLong scannedCount,
       AtomicLong seekCount, KeyExtent extent, AccumuloConfiguration accuConf, Authorizations auths, Set<Column> columns) throws IOException {
@@ -143,21 +143,6 @@ public class MyBenchmark {
         return null;
       }
 
-      @Override
-      public IteratorEnvironment cloneWithSamplingEnabled() {
-        return null;
-      }
-
-      @Override
-      public boolean isSamplingEnabled() {
-        return false;
-      }
-
-      @Override
-      public SamplerConfiguration getSamplerConfiguration() {
-        return null;
-      }
-
       public boolean isFullMajorCompaction() {
         return false;
       }
@@ -172,7 +157,7 @@ public class MyBenchmark {
     };
 
     StatsIterator statsIterator = new StatsIterator(multiIter, seekCount, scannedCount);
-    SortedKeyValueIterator<Key,Value> systemIters = IteratorUtil.setupSystemScanIterators(statsIterator, columns, auths,
+    SortedKeyValueIterator<Key,Value> systemIters = setupSystemScanIterators(statsIterator, columns, auths,
         new byte[0]);
 
     return IteratorUtil.loadIterators(IteratorUtil.IteratorScope.scan, systemIters, extent, accuConf, Collections.emptyList(), Collections.emptyMap(), iterEnv);
@@ -184,8 +169,15 @@ public class MyBenchmark {
       iter.next();
       //count++;
     }
-
     //if(expected != count) { throw new IllegalArgumentException(expected + " != "+count); }
+  }
+
+  public static SortedKeyValueIterator<Key,Value> setupSystemScanIterators(SortedKeyValueIterator<Key,Value> source, Set<Column> cols, Authorizations auths,
+      byte[] defaultVisibility) throws IOException {
+    DeletingIterator delIter = new DeletingIterator(source, false);
+    ColumnFamilySkippingIterator cfsi = new ColumnFamilySkippingIterator(delIter);
+    SortedKeyValueIterator<Key,Value> colFilter = ColumnQualifierFilter.wrap(cfsi, cols);
+    return VisibilityFilter.wrap(colFilter, auths, defaultVisibility);
   }
 
   @Benchmark
