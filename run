@@ -53,7 +53,8 @@ if [[ -n $TEST ]]; then
   if [[ ! -d "./results" ]]; then
      mkdir ./results
   fi
-  uname -rsv > results/$OUT_FILE
+  grep "<accumulo.version>" pom.xml | sed 's|</.*n>||g' | sed 's|<.*>||g' > ./results/$OUT_FILE
+  uname -rsv >> ./results/$OUT_FILE
   if [[ -n "$ITERATIONS" ]]; then
      $JMH_CMD -f 1 -i "$ITERATIONS" "$TEST" | tee -a ./results/$OUT_FILE
      GOOD=YES
