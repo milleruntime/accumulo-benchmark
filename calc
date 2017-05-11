@@ -1,0 +1,70 @@
+#!/bin/bash
+
+F1=$1
+F2=$2
+
+# store output of each file in an array
+arr1_tests=( $(tail ${F1} | awk '{print $1}') )
+arr1_scores=( $(tail ${F1} | awk '{print $4}') )
+arr2_tests=( $(tail ${F2} | awk '{print $1}') )
+arr2_scores=( $(tail ${F2} | awk '{print $4}') )
+
+# make sure arrays are same length
+echo "number of tests in $F1 = ${#arr1_tests[@]}"
+echo "number of scores in $F1 = ${#arr1_scores[@]}"
+echo "number of tests in $F2 = ${#arr2_tests[@]}"
+echo "number of scores in $F2 = ${#arr2_scores[@]}"
+
+# drop unwanted stuff from arrays
+a1t=0
+for x in "${arr1_tests[@]}"
+do 
+ if [[ ! "${x}" == "Benchmark" ]] && [[ ! "${x}" == "Score" ]] && [[ -n "$x" ]] ; then
+    a1t=$(( a1t + 1 ))
+    clean_arr1_tests["${a1t}"]=${x} 
+ fi
+done
+
+echo "clean_arr1_tests count= ${#clean_arr1_tests[@]}"
+
+a1s=0
+for x in "${arr1_scores[@]}"
+do 
+ if [[ ! "${x}" == "Benchmark" ]] && [[ ! "${x}" == "Score" ]] && [[ -n "$x" ]]  ; then
+    a1s=$(( a1s + 1 ))
+    clean_arr1_scores["${a1s}"]=${x} 
+ fi
+done
+
+echo "clean arr1 scores count = ${#clean_arr1_scores[@]}"
+
+a2t=0
+for x in "${arr2_tests[@]}"
+do 
+ if [[ ! "${x}" == "Benchmark" ]] && [[ ! "${x}" == "Score" ]] && [[ -n "$x" ]] ; then
+    a2t=$(( a2t + 1 ))
+    clean_arr2_tests["${a2t}"]=${x} 
+ fi
+done
+
+echo "clean arr2 tests count = ${#clean_arr2_tests[@]}"
+
+a2s=0
+for x in "${arr2_scores[@]}"
+do 
+ if [[ ! "${x}" == "Benchmark" ]] && [[ ! "${x}" == "Score" ]] && [[ -n "$x" ]] ; then
+    a2s=$(( a2s + 1 ))
+    clean_arr2_scores["${a2s}"]=${x} 
+ fi
+done
+
+echo "clean arr2 scores count = ${#clean_arr2_scores[@]}"
+
+count=0
+while [[ "$count" < "$a1t" ]] ; do
+  echo "Results for ${clean_arr1_tests[$count]} yieled:"
+  echo "(${clean_arr2_scores[$count]}-${clean_arr1_scores[$count]})/${clean_arr1_scores[$count]}*100 = "
+  count=$(( count + 1 ))
+done
+
+
