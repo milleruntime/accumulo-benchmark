@@ -49,10 +49,13 @@ if len(r1) != len(r2):
     print "Brah your results differ.  Check your files."
     sys.exit()
 
+total_percents = []
 for x in range(len(r1)):
     dict1 = r1[x]
     dict2 = r2[x]
     percent = (float(dict2[1]) - float(dict1[1])) / float(dict1[1]) * 100
+    total_percents.append(percent)
     output = "Test: {} showed {:.1f}% increase in ops/s".format(dict1[0], percent)
     print output
 
+print "Total average {:.2f}% increase in ops/s".format(sum(total_percents) / float(len(total_percents)))
