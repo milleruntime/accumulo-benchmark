@@ -1,4 +1,4 @@
-package org.sample;
+package org.apache.accumulo;
 
 import java.util.Map;
 import org.apache.accumulo.core.client.BatchWriter;

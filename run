@@ -1,14 +1,14 @@
 #!/bin/bash
-JMH_CMD="java -jar target/benchmarks.jar "
+JMH_CMD="java -jar jmh-test/target/benchmarks.jar "
+JMH_CP="jmh-test/target/benchmarks.jar "
 OUT_FILE="results-`date +%F_%H%M%S`"
 
 usage() {
-  echo "$0 [-g|--generate] [-i|--iter <num>] [-p|--print] [-t|--test <test>]"
+  echo "$0 [-p|--print] [-i|--iter <num>] [-t|--test <test>]"
   echo "Options:"
-  echo "-t|--test <test>    Test to run in JMH"
-  echo "-g|--generate    Generate RFile for testing"
+  echo "-p|--print         Print all of the available tests"
+  echo "-t|--test <test*>  Test(s) to run in JMH. Can use Regex to match multiple tests."
   echo "-i|--iter <num>    Set the number of test iterations"
-  echo "-p|--print     Print all of the available tests"
   exit
 }
 
@@ -19,9 +19,6 @@ fi
 while [[ $# -gt 0 ]]
 do
 case $1 in
-    -g|--generate)
-    GENERATE=YES
-    ;;
     -p|--print)
     PRINT_TESTS=YES
     ;;
@@ -41,11 +38,7 @@ shift
 done
 
 if [[ -n "$PRINT_TESTS" ]]; then
-  java -cp target/benchmarks.jar org.sample.PrintTests
-  exit 0
-fi
-if [[ -n "$GENERATE" ]]; then
-  java -cp target/benchmarks.jar org.sample.Generate
+  java -cp $JMH_CP org.apache.accumulo.PrintTests
   exit 0
 fi
 
