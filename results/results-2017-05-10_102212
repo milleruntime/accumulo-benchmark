@@ -8,7 +8,7 @@ Darwin 14.5.0 Darwin Kernel Version 14.5.0: Sun Sep 25 22:07:15 PDT 2016; root:x
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.sample.MyBenchmark.seekAllSystemIters10
+# Benchmark: org.apache.MyBenchmark.seekAllSystemIters10
 
 # Run progress: 0.00% complete, ETA 00:14:00
 # Fork: 1 of 1
@@ -121,7 +121,7 @@ Iteration  99: 213221.607 ops/s
 Iteration 100: 212564.961 ops/s
 
 
-Result "org.sample.MyBenchmark.seekAllSystemIters10":
+Result "org.apache.MyBenchmark.seekAllSystemIters10":
   207822.064 ±(99.9%) 2259.755 ops/s [Average]
   (min, avg, max) = (190392.208, 207822.064, 213221.607), stdev = 6662.938
   CI (99.9%): [205562.309, 210081.819] (assumes normal distribution)
@@ -136,7 +136,7 @@ Result "org.sample.MyBenchmark.seekAllSystemIters10":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.sample.MyBenchmark.seekAllSystemIters1000
+# Benchmark: org.apache.MyBenchmark.seekAllSystemIters1000
 
 # Run progress: 12.50% complete, ETA 00:12:37
 # Fork: 1 of 1
@@ -249,7 +249,7 @@ Iteration  99: 871.606 ops/s
 Iteration 100: 868.183 ops/s
 
 
-Result "org.sample.MyBenchmark.seekAllSystemIters1000":
+Result "org.apache.MyBenchmark.seekAllSystemIters1000":
   869.741 ±(99.9%) 1.275 ops/s [Average]
   (min, avg, max) = (856.716, 869.741, 875.370), stdev = 3.758
   CI (99.9%): [868.467, 871.016] (assumes normal distribution)
@@ -264,7 +264,7 @@ Result "org.sample.MyBenchmark.seekAllSystemIters1000":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.sample.MyBenchmark.seekTestWithCQFilter10
+# Benchmark: org.apache.MyBenchmark.seekTestWithCQFilter10
 
 # Run progress: 25.00% complete, ETA 00:10:49
 # Fork: 1 of 1
@@ -377,7 +377,7 @@ Iteration  99: 146472.979 ops/s
 Iteration 100: 146427.964 ops/s
 
 
-Result "org.sample.MyBenchmark.seekTestWithCQFilter10":
+Result "org.apache.MyBenchmark.seekTestWithCQFilter10":
   149750.604 ±(99.9%) 1555.863 ops/s [Average]
   (min, avg, max) = (138886.236, 149750.604, 153658.869), stdev = 4587.498
   CI (99.9%): [148194.741, 151306.467] (assumes normal distribution)
@@ -392,7 +392,7 @@ Result "org.sample.MyBenchmark.seekTestWithCQFilter10":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.sample.MyBenchmark.seekTestWithCQFilter1000
+# Benchmark: org.apache.MyBenchmark.seekTestWithCQFilter1000
 
 # Run progress: 37.50% complete, ETA 00:09:00
 # Fork: 1 of 1
@@ -505,7 +505,7 @@ Iteration  99: 621.871 ops/s
 Iteration 100: 620.883 ops/s
 
 
-Result "org.sample.MyBenchmark.seekTestWithCQFilter1000":
+Result "org.apache.MyBenchmark.seekTestWithCQFilter1000":
   625.640 ±(99.9%) 0.685 ops/s [Average]
   (min, avg, max) = (616.958, 625.640, 627.909), stdev = 2.021
   CI (99.9%): [624.955, 626.326] (assumes normal distribution)
@@ -520,7 +520,7 @@ Result "org.sample.MyBenchmark.seekTestWithCQFilter1000":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.sample.MyBenchmark.seekTestWithCfFilter10
+# Benchmark: org.apache.MyBenchmark.seekTestWithCfFilter10
 
 # Run progress: 50.00% complete, ETA 00:07:12
 # Fork: 1 of 1
@@ -633,7 +633,7 @@ Iteration  99: 219322.105 ops/s
 Iteration 100: 219770.411 ops/s
 
 
-Result "org.sample.MyBenchmark.seekTestWithCfFilter10":
+Result "org.apache.MyBenchmark.seekTestWithCfFilter10":
   215100.704 ±(99.9%) 2436.698 ops/s [Average]
   (min, avg, max) = (198058.302, 215100.704, 219828.328), stdev = 7184.658
   CI (99.9%): [212664.007, 217537.402] (assumes normal distribution)
@@ -648,7 +648,7 @@ Result "org.sample.MyBenchmark.seekTestWithCfFilter10":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.sample.MyBenchmark.seekTestWithCfFilter1000
+# Benchmark: org.apache.MyBenchmark.seekTestWithCfFilter1000
 
 # Run progress: 62.50% complete, ETA 00:05:24
 # Fork: 1 of 1
@@ -761,7 +761,7 @@ Iteration  99: 912.863 ops/s
 Iteration 100: 912.525 ops/s
 
 
-Result "org.sample.MyBenchmark.seekTestWithCfFilter1000":
+Result "org.apache.MyBenchmark.seekTestWithCfFilter1000":
   916.914 ±(99.9%) 1.742 ops/s [Average]
   (min, avg, max) = (894.461, 916.914, 923.815), stdev = 5.136
   CI (99.9%): [915.172, 918.656] (assumes normal distribution)
@@ -776,7 +776,7 @@ Result "org.sample.MyBenchmark.seekTestWithCfFilter1000":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.sample.MyBenchmark.seekTestWithEmptyAuths10
+# Benchmark: org.apache.MyBenchmark.seekTestWithEmptyAuths10
 
 # Run progress: 75.00% complete, ETA 00:03:36
 # Fork: 1 of 1
@@ -889,7 +889,7 @@ Iteration  99: 273687.308 ops/s
 Iteration 100: 273210.069 ops/s
 
 
-Result "org.sample.MyBenchmark.seekTestWithEmptyAuths10":
+Result "org.apache.MyBenchmark.seekTestWithEmptyAuths10":
   270183.524 ±(99.9%) 4443.990 ops/s [Average]
   (min, avg, max) = (242088.320, 270183.524, 292270.388), stdev = 13103.207
   CI (99.9%): [265739.534, 274627.515] (assumes normal distribution)
@@ -904,7 +904,7 @@ Result "org.sample.MyBenchmark.seekTestWithEmptyAuths10":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.sample.MyBenchmark.seekTestWithEmptyAuths1000
+# Benchmark: org.apache.MyBenchmark.seekTestWithEmptyAuths1000
 
 # Run progress: 87.50% complete, ETA 00:01:48
 # Fork: 1 of 1
@@ -1017,7 +1017,7 @@ Iteration  99: 1363.207 ops/s
 Iteration 100: 1367.331 ops/s
 
 
-Result "org.sample.MyBenchmark.seekTestWithEmptyAuths1000":
+Result "org.apache.MyBenchmark.seekTestWithEmptyAuths1000":
   1356.117 ±(99.9%) 8.946 ops/s [Average]
   (min, avg, max) = (1281.053, 1356.117, 1377.850), stdev = 26.376
   CI (99.9%): [1347.171, 1365.062] (assumes normal distribution)

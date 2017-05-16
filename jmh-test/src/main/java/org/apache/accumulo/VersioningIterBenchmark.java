@@ -1,4 +1,4 @@
-package org.sample;
+package org.apache.accumulo;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -38,7 +38,7 @@ public class VersioningIterBenchmark {
           int stamps = rand.nextInt(19)+1;
           for(int t = 0; t< stamps; t++) {
             Key k = new Key(row, "fam",qual, rand.nextInt(1_000_000_000));
-            Value val = new Value(v++ + "");
+            Value val = new Value((v++ + "").getBytes());
             
             tmap.put(k, val);
           }
