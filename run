@@ -1,16 +1,26 @@
 #!/bin/bash
 JMH_CMD="java -jar jmh-test/target/benchmarks.jar "
 JMH_CP="jmh-test/target/benchmarks.jar "
+PRINT_VERSION_CMD="java -cp $JMH_CP org.apache.accumulo.TestUtils -v"
 OUT_FILE="results-`date +%F_%H%M%S`"
 
 usage() {
   echo "$0 [-p|--print] [-i|--iter <num>] [-t|--test <test>]"
   echo "Options:"
   echo "-p|--print         Print all of the available tests"
+  echo "-v|--version       Print the version of Iterator stack included in the uber jar"
   echo "-t|--test <test*>  Test(s) to run in JMH. Can use Regex to match multiple tests."
   echo "-i|--iter <num>    Set the number of test iterations"
   echo "-h|--help          Print this help."
   exit
+}
+
+setupOutFile() {
+  if [[ ! -d "./results" ]]; then
+     mkdir ./results
+  fi
+  $PRINT_VERSION_CMD > ./results/$OUT_FILE
+  uname -rsv >> ./results/$OUT_FILE
 }
 
 while [[ $# -gt 0 ]]
@@ -22,6 +32,9 @@ case $1 in
     -p|--print)
     PRINT_TESTS=YES
     ;;
+    -v|--version)
+    PRINT_VERSION=YES
+    ;;
     -i|--iter)
     ITERATIONS="$2"
     shift 
@@ -32,22 +45,23 @@ case $1 in
     ;;
     *)
     echo "Unknown option: $1"
+    usage
     ;;
 esac
 shift
 done
 
 if [[ -n "$PRINT_TESTS" ]]; then
-  java -cp $JMH_CP org.apache.accumulo.PrintTests
+  java -cp $JMH_CP org.apache.accumulo.TestUtils -p
+  exit 0
+fi
+if [[ -n "$PRINT_VERSION" ]]; then
+  $PRINT_VERSION_CMD
   exit 0
 fi
 
 if [[ -n $TEST ]]; then
-  if [[ ! -d "./results" ]]; then
-     mkdir ./results
-  fi
-  #grep "<accumulo.version>" pom.xml | sed 's|</.*n>||g' | sed 's|<.*>||g' > ./results/$OUT_FILE
-  uname -rsv >> ./results/$OUT_FILE
+  setupOutFile
   if [[ -n "$ITERATIONS" ]]; then
      $JMH_CMD -f 1 -i "$ITERATIONS" "$TEST" | tee -a ./results/$OUT_FILE
      GOOD=YES
@@ -56,7 +70,7 @@ if [[ -n $TEST ]]; then
      GOOD=YES
   fi
 else
-  uname -rsv >> ./results/$OUT_FILE
+  setupOutFile
   $JMH_CMD -f 1 | tee -a ./results/$OUT_FILE
   GOOD=YES
 fi
