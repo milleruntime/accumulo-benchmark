@@ -70,13 +70,13 @@ public class MyBenchmark {
   }
 
   public static void readAll(SortedKeyValueIterator<Key,Value> iter, int expected) throws IOException {
-    int count = 0;
+    //int count = 0;
     while (iter.hasTop()) {
       iter.next();
-      count++;
+      //count++;
     }
 
-    if(expected != count) { throw new IllegalArgumentException(expected + " != "+count); }
+    //if(expected != count) { throw new IllegalArgumentException(expected + " != "+count); }
   }
 
   @Benchmark
