@@ -37,8 +37,8 @@ public class InMemoryMapBenchmark {
   public void testInMemoryMap10(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00016610"));
     state.memoryIterator.seek(range, MyBenchmark.EMPTY_COL_FAMS, false);
-    MyBenchmark.readAll(state.memoryIterator, 8192);
-    //memoryIterator.close();
+    MyBenchmark.readAll(state.memoryIterator, 32);
+    //state.memoryIterator.close();
   }
 
   @Benchmark

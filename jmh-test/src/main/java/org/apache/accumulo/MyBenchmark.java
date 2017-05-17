@@ -70,7 +70,7 @@ public class MyBenchmark {
   }
 
   public static void readAll(SortedKeyValueIterator<Key,Value> iter, int expected) throws IOException {
-     int count = 0;
+    int count = 0;
     while (iter.hasTop()) {
       iter.next();
       count++;
@@ -129,8 +129,7 @@ public class MyBenchmark {
   
   @Benchmark
   @Warmup(iterations = 5)
-  //public void seekAllSystemIters10(BenchmarkState state) throws IOException {
-  public void scanAll(BenchmarkState state) throws IOException {
+  public void seekAllSystemIters10(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00016610"));
     state.iterStack.seek(range, EMPTY_COL_FAMS, false);
     readAll(state.iterStack, 32);

@@ -9,16 +9,16 @@ usage() {
   echo "-p|--print         Print all of the available tests"
   echo "-t|--test <test*>  Test(s) to run in JMH. Can use Regex to match multiple tests."
   echo "-i|--iter <num>    Set the number of test iterations"
+  echo "-h|--help          Print this help."
   exit
 }
-
-if [[ -z "$@" ]]; then
-  usage
-fi
 
 while [[ $# -gt 0 ]]
 do
 case $1 in
+    -h|--help)
+    usage
+    ;;
     -p|--print)
     PRINT_TESTS=YES
     ;;
@@ -46,7 +46,7 @@ if [[ -n $TEST ]]; then
   if [[ ! -d "./results" ]]; then
      mkdir ./results
   fi
-  grep "<accumulo.version>" pom.xml | sed 's|</.*n>||g' | sed 's|<.*>||g' > ./results/$OUT_FILE
+  #grep "<accumulo.version>" pom.xml | sed 's|</.*n>||g' | sed 's|<.*>||g' > ./results/$OUT_FILE
   uname -rsv >> ./results/$OUT_FILE
   if [[ -n "$ITERATIONS" ]]; then
      $JMH_CMD -f 1 -i "$ITERATIONS" "$TEST" | tee -a ./results/$OUT_FILE
@@ -55,6 +55,10 @@ if [[ -n $TEST ]]; then
      $JMH_CMD -f 1 "$TEST" | tee -a ./results/$OUT_FILE
      GOOD=YES
   fi
+else
+  uname -rsv >> ./results/$OUT_FILE
+  $JMH_CMD -f 1 | tee -a ./results/$OUT_FILE
+  GOOD=YES
 fi
 
 if [[ -z "$GOOD" ]]; then

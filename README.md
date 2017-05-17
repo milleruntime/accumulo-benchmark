@@ -1,25 +1,40 @@
 # Accumulo System Iterator Perfomance Tests
 ---
 
-## Build
+## Build Version 2.0.0 (Default)
 
 ```bash
-mvn clean package
+mvn clean install
 ```
-
-## Generate data
-
+## Build other versions
 ```bash
-./run -g
+mvn clean install -P 173
+mvn clean install -P 174
 ```
 
-## Run test
-
+## Run all tests
 ```bash
-./run -t <test-name>
+./run
 ```
+
+## Run specific tests
+```bash
+./run -t testMethodName*
+```
+Regex can be used for test-name to run multiple tests at once.
+
+## Run a single test
+```bash
+./run -t ClassName.testMethodName
+```
+## Specify the number of iterations (Default = 20)
+```bash
+./run -t ClassName.testMethodName -i 100
+```
+The output of the tests run will be saved in the results directory.
 
 ## Print all benchmark tests
+This is handy for quickly seeing all the tests available.
 ```bash
 ./run -p
 ```
