@@ -60,7 +60,24 @@
             <modules>
                 <module>ais-1.7.4</module>
             </modules>
-
+        </profile>
+        <profile>
+            <id>181</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>ais-1.8.1</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>182</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>ais-1.8.2</module>
+            </modules>
         </profile>
         <profile>
             <id>200</id>

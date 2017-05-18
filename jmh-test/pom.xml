@@ -63,6 +63,38 @@
             </dependencies>
         </profile>
         <profile>
+            <id>181</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <accumulo.version>1.8.1</accumulo.version>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.accumulo</groupId>
+                    <artifactId>accumulo-iterator-stack</artifactId>
+                    <version>1.8.1</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>182</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <accumulo.version>1.8.2-SNAPSHOT</accumulo.version>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.accumulo</groupId>
+                    <artifactId>accumulo-iterator-stack</artifactId>
+                    <version>1.8.2-SNAPSHOT</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
             <id>200</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
