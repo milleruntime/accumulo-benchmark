@@ -15,7 +15,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 public class TestUtils {
   // Add new classes to this array
   // All classes containing Benchmarks
-  public static Class [] ALL_CLASSES = { MyBenchmark.class, UnoBenchmarkIT.class, InMemoryMapBenchmark.class, VersioningIterBenchmark.class };
+  public static Class [] ALL_CLASSES = { TablesBenchmark.class, MyBenchmark.class, UnoBenchmarkIT.class, InMemoryMapBenchmark.class, VersioningIterBenchmark.class };
 
   public static void main(String[] args) {
     for(String a : args)

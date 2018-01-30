@@ -3,14 +3,17 @@ JMH_CMD="java -jar jmh-test/target/benchmarks.jar "
 JMH_CP="jmh-test/target/benchmarks.jar "
 PRINT_VERSION_CMD="java -cp $JMH_CP org.apache.accumulo.TestUtils -v"
 OUT_FILE="results-`date +%F_%H%M%S`"
+ITERATIONS=10
+THREADS=1
 
 usage() {
-  echo "$0 [-p|--print] [-i|--iter <num>] [-t|--test <test>]"
+  echo "$0 [-p|--print] [-i|--iter <num>] [-n|--name <test-name>]"
   echo "Options:"
   echo "-p|--print         Print all of the available tests"
   echo "-v|--version       Print the version of Iterator stack included in the uber jar"
-  echo "-t|--test <test*>  Test(s) to run in JMH. Can use Regex to match multiple tests."
-  echo "-i|--iter <num>    Set the number of test iterations"
+  echo "-n|--name <test*>  Test(s) to run in JMH. Can use Regex to match multiple tests."
+  echo "-i|--iter <num>    Set the number of test iterations. Default is 10"
+  echo "-t|--threads <num> Set the number of threads. Default is 1"
   echo "-h|--help          Print this help."
   exit
 }
@@ -39,8 +42,12 @@ case $1 in
     ITERATIONS="$2"
     shift 
     ;;
-    -t|--test)
+    -n|--name)
     TEST=$2 
+    shift
+    ;;
+    -t|--threads)
+    THREADS="$2" 
     shift
     ;;
     *)
@@ -62,16 +69,11 @@ fi
 
 if [[ -n $TEST ]]; then
   setupOutFile
-  if [[ -n "$ITERATIONS" ]]; then
-     $JMH_CMD -f 1 -i "$ITERATIONS" "$TEST" | tee -a ./results/$OUT_FILE
-     GOOD=YES
-  else
-     $JMH_CMD -f 1 "$TEST" | tee -a ./results/$OUT_FILE
-     GOOD=YES
-  fi
+  $JMH_CMD -f 1 -t "$THREADS" -i "$ITERATIONS" "$TEST" | tee -a ./results/$OUT_FILE
+  GOOD=YES
 else
   setupOutFile
-  $JMH_CMD -f 1 | tee -a ./results/$OUT_FILE
+  $JMH_CMD -f 1 -t "$THREADS" | tee -a ./results/$OUT_FILE
   GOOD=YES
 fi
 
