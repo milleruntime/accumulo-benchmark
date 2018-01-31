@@ -84,13 +84,13 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <accumulo.version>1.8.2-SNAPSHOT</accumulo.version>
+                <accumulo.version>1.9.0-SNAPSHOT</accumulo.version>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.apache.accumulo</groupId>
                     <artifactId>accumulo-iterator-stack</artifactId>
-                    <version>1.8.2-SNAPSHOT</version>
+                    <version>1.9.0-SNAPSHOT</version>
                 </dependency>
             </dependencies>
         </profile>
