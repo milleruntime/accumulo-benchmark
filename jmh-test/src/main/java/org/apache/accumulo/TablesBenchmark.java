@@ -1,5 +1,6 @@
 package org.apache.accumulo;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,12 +35,13 @@ public class TablesBenchmark {
 
         public BenchmarkState() {
             try {
-                Path tempDir = Files.createTempDirectory(Paths.get("mini"), "mac");
+                Path miniDir = Paths.get(System.getProperty("user.dir"), "jmh-test", "target", "mini-tests");
+                Files.createDirectory(miniDir);
+                Path tempDir = Files.createTempDirectory(miniDir, "mac");
                 mac = new MiniAccumuloCluster(tempDir.toFile(), "blah");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-
         }
 
         @Setup(Level.Trial)
