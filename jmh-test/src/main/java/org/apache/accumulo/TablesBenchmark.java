@@ -36,7 +36,8 @@ public class TablesBenchmark {
         public BenchmarkState() {
             try {
                 Path miniDir = Paths.get(System.getProperty("user.dir"), "jmh-test", "target", "mini-tests");
-                Files.createDirectory(miniDir);
+                if (!miniDir.toFile().exists())
+                    Files.createDirectory(miniDir);
                 Path tempDir = Files.createTempDirectory(miniDir, "mac");
                 mac = new MiniAccumuloCluster(tempDir.toFile(), "blah");
             } catch (Exception e) {
