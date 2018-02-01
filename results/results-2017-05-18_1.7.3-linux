@@ -9,7 +9,7 @@ Linux 4.4.0-78-generic #99-Ubuntu SMP Thu Apr 27 15:29:09 UTC 2017
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.apache.accumulo.MyBenchmark.seekAllSystemIters10
+# Benchmark: org.apache.accumulo.IteratorStackBenchmark.seekAllSystemIters10
 
 # Run progress: 0.00% complete, ETA 00:14:00
 # Fork: 1 of 1
@@ -121,7 +121,7 @@ Iteration  99: 119112.410 ops/s
 Iteration 100: 119720.811 ops/s
 
 
-Result "org.apache.accumulo.MyBenchmark.seekAllSystemIters10":
+Result "org.apache.accumulo.IteratorStackBenchmark.seekAllSystemIters10":
   118953.920 ±(99.9%) 1657.432 ops/s [Average]
   (min, avg, max) = (80641.642, 118953.920, 121837.954), stdev = 4886.976
   CI (99.9%): [117296.488, 120611.352] (assumes normal distribution)
@@ -136,7 +136,7 @@ Result "org.apache.accumulo.MyBenchmark.seekAllSystemIters10":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.apache.accumulo.MyBenchmark.seekAllSystemIters1000
+# Benchmark: org.apache.accumulo.IteratorStackBenchmark.seekAllSystemIters1000
 
 # Run progress: 12.50% complete, ETA 00:13:03
 # Fork: 1 of 1
@@ -248,7 +248,7 @@ Iteration  99: 494.180 ops/s
 Iteration 100: 486.309 ops/s
 
 
-Result "org.apache.accumulo.MyBenchmark.seekAllSystemIters1000":
+Result "org.apache.accumulo.IteratorStackBenchmark.seekAllSystemIters1000":
   492.474 ±(99.9%) 4.772 ops/s [Average]
   (min, avg, max) = (441.492, 492.474, 510.194), stdev = 14.071
   CI (99.9%): [487.702, 497.246] (assumes normal distribution)
@@ -263,7 +263,7 @@ Result "org.apache.accumulo.MyBenchmark.seekAllSystemIters1000":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithCQFilter10
+# Benchmark: org.apache.accumulo.IteratorStackBenchmark.seekTestWithCQFilter10
 
 # Run progress: 25.00% complete, ETA 00:11:08
 # Fork: 1 of 1
@@ -375,7 +375,7 @@ Iteration  99: 127138.902 ops/s
 Iteration 100: 128105.979 ops/s
 
 
-Result "org.apache.accumulo.MyBenchmark.seekTestWithCQFilter10":
+Result "org.apache.accumulo.IteratorStackBenchmark.seekTestWithCQFilter10":
   124577.665 ±(99.9%) 3456.976 ops/s [Average]
   (min, avg, max) = (27801.975, 124577.665, 131407.571), stdev = 10192.973
   CI (99.9%): [121120.689, 128034.641] (assumes normal distribution)
@@ -390,7 +390,7 @@ Result "org.apache.accumulo.MyBenchmark.seekTestWithCQFilter10":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithCQFilter1000
+# Benchmark: org.apache.accumulo.IteratorStackBenchmark.seekTestWithCQFilter1000
 
 # Run progress: 37.50% complete, ETA 00:09:18
 # Fork: 1 of 1
@@ -502,7 +502,7 @@ Iteration  99: 547.581 ops/s
 Iteration 100: 552.609 ops/s
 
 
-Result "org.apache.accumulo.MyBenchmark.seekTestWithCQFilter1000":
+Result "org.apache.accumulo.IteratorStackBenchmark.seekTestWithCQFilter1000":
   545.469 ±(99.9%) 4.725 ops/s [Average]
   (min, avg, max) = (490.589, 545.469, 564.092), stdev = 13.931
   CI (99.9%): [540.744, 550.194] (assumes normal distribution)
@@ -517,7 +517,7 @@ Result "org.apache.accumulo.MyBenchmark.seekTestWithCQFilter1000":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithCfFilter10
+# Benchmark: org.apache.accumulo.IteratorStackBenchmark.seekTestWithCfFilter10
 
 # Run progress: 50.00% complete, ETA 00:07:25
 # Fork: 1 of 1
@@ -629,7 +629,7 @@ Iteration  99: 157356.784 ops/s
 Iteration 100: 156521.544 ops/s
 
 
-Result "org.apache.accumulo.MyBenchmark.seekTestWithCfFilter10":
+Result "org.apache.accumulo.IteratorStackBenchmark.seekTestWithCfFilter10":
   155859.744 ±(99.9%) 992.914 ops/s [Average]
   (min, avg, max) = (137601.651, 155859.744, 159292.401), stdev = 2927.630
   CI (99.9%): [154866.830, 156852.658] (assumes normal distribution)
@@ -644,7 +644,7 @@ Result "org.apache.accumulo.MyBenchmark.seekTestWithCfFilter10":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithCfFilter1000
+# Benchmark: org.apache.accumulo.IteratorStackBenchmark.seekTestWithCfFilter1000
 
 # Run progress: 62.50% complete, ETA 00:05:34
 # Fork: 1 of 1
@@ -756,7 +756,7 @@ Iteration  99: 652.830 ops/s
 Iteration 100: 652.431 ops/s
 
 
-Result "org.apache.accumulo.MyBenchmark.seekTestWithCfFilter1000":
+Result "org.apache.accumulo.IteratorStackBenchmark.seekTestWithCfFilter1000":
   651.986 ±(99.9%) 4.695 ops/s [Average]
   (min, avg, max) = (588.504, 651.986, 671.532), stdev = 13.843
   CI (99.9%): [647.291, 656.681] (assumes normal distribution)
@@ -771,7 +771,7 @@ Result "org.apache.accumulo.MyBenchmark.seekTestWithCfFilter1000":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithEmptyAuths10
+# Benchmark: org.apache.accumulo.IteratorStackBenchmark.seekTestWithEmptyAuths10
 
 # Run progress: 75.00% complete, ETA 00:03:42
 # Fork: 1 of 1
@@ -883,7 +883,7 @@ Iteration  99: 128529.274 ops/s
 Iteration 100: 126897.051 ops/s
 
 
-Result "org.apache.accumulo.MyBenchmark.seekTestWithEmptyAuths10":
+Result "org.apache.accumulo.IteratorStackBenchmark.seekTestWithEmptyAuths10":
   129058.709 ±(99.9%) 1854.170 ops/s [Average]
   (min, avg, max) = (108289.272, 129058.709, 134209.272), stdev = 5467.062
   CI (99.9%): [127204.539, 130912.879] (assumes normal distribution)
@@ -898,7 +898,7 @@ Result "org.apache.accumulo.MyBenchmark.seekTestWithEmptyAuths10":
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
-# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithEmptyAuths1000
+# Benchmark: org.apache.accumulo.IteratorStackBenchmark.seekTestWithEmptyAuths1000
 
 # Run progress: 87.50% complete, ETA 00:01:51
 # Fork: 1 of 1
@@ -1010,7 +1010,7 @@ Iteration  99: 558.275 ops/s
 Iteration 100: 557.505 ops/s
 
 
-Result "org.apache.accumulo.MyBenchmark.seekTestWithEmptyAuths1000":
+Result "org.apache.accumulo.IteratorStackBenchmark.seekTestWithEmptyAuths1000":
   542.290 ±(99.9%) 5.423 ops/s [Average]
   (min, avg, max) = (494.857, 542.290, 570.465), stdev = 15.991
   CI (99.9%): [536.866, 547.713] (assumes normal distribution)

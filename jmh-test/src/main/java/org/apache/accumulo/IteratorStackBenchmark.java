@@ -21,7 +21,7 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 
-public class MyBenchmark {
+public class IteratorStackBenchmark {
 
   public static final Collection<ByteSequence> EMPTY_COL_FAMS = new ArrayList<>();
   public static final Collection<ByteSequence> CF1S = new HashSet<>(Arrays.asList(new ArrayByteSequence("testCF1")));

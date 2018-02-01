@@ -24,7 +24,7 @@ public class InMemoryMapBenchmark {
 
     public BenchmarkState() {
       try {
-        sortedMap = MyBenchmark.generateSortedMap(new String[]{"","CHUNKY","CREAMY","CHUNKY|CREAMY"});
+        sortedMap = IteratorStackBenchmark.generateSortedMap(new String[]{"","CHUNKY","CREAMY","CHUNKY|CREAMY"});
         memoryIterator =  new TestInMemoryStack(sortedMap).getIterStack();
       } catch (Exception e) {
         e.printStackTrace();
@@ -36,8 +36,8 @@ public class InMemoryMapBenchmark {
   @Warmup(iterations = 10)
   public void testInMemoryMap10(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00016610"));
-    state.memoryIterator.seek(range, MyBenchmark.EMPTY_COL_FAMS, false);
-    MyBenchmark.readAll(state.memoryIterator, 32);
+    state.memoryIterator.seek(range, IteratorStackBenchmark.EMPTY_COL_FAMS, false);
+    IteratorStackBenchmark.readAll(state.memoryIterator, 32);
     //state.memoryIterator.close();
   }
 
@@ -45,8 +45,8 @@ public class InMemoryMapBenchmark {
   @Warmup(iterations = 10)
   public void testInMemoryMap1000(BenchmarkState state) throws IOException {
     Range range = new Range(new Key("mytestrow00016600"), new Key("mytestrow00017600"));
-    state.memoryIterator.seek(range, MyBenchmark.EMPTY_COL_FAMS, false);
-    MyBenchmark.readAll(state.memoryIterator, 8192);
+    state.memoryIterator.seek(range, IteratorStackBenchmark.EMPTY_COL_FAMS, false);
+    IteratorStackBenchmark.readAll(state.memoryIterator, 8192);
     //memoryIterator.close();
   }
 }
