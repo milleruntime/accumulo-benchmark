@@ -1,7 +1,7 @@
 #!/bin/bash
 JMH_CMD="java -jar jmh-test/target/benchmarks.jar "
 JMH_CP="jmh-test/target/benchmarks.jar "
-PRINT_VERSION_CMD="java -cp $JMH_CP org.apache.accumulo.TestUtils -v"
+PRINT_VERSION_CMD="java -cp $JMH_CP org.apache.accumulo.util.TestUtils -v"
 OUT_FILE="results-`date +%F_%H%M%S`"
 ITERATIONS=10
 THREADS=1
@@ -59,7 +59,7 @@ shift
 done
 
 if [[ -n "$PRINT_TESTS" ]]; then
-  java -cp $JMH_CP org.apache.accumulo.TestUtils -p
+  java -cp $JMH_CP org.apache.accumulo.util.TestUtils -p
   exit 0
 fi
 if [[ -n "$PRINT_VERSION" ]]; then

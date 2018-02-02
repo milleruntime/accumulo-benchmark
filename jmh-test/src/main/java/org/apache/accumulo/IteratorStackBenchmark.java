@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import org.apache.AIS;
 import org.apache.TestIteratorStack;
 import org.apache.accumulo.core.data.ArrayByteSequence;
 import org.apache.accumulo.core.data.ByteSequence;
@@ -37,7 +38,7 @@ public class IteratorStackBenchmark {
 
     public BenchmarkState() {
 
-      System.out.println("Generating data and creating Iterator stack version " + TestIteratorStack.VERSION);
+      System.out.println("Generating data and creating Iterator stack version " + AIS.VERSION);
       try {
         Authorizations auths = new Authorizations("CHUNKY", "CREAMY");
         sortedMap = generateSortedMap(new String[]{"","CHUNKY","CREAMY","CHUNKY|CREAMY"});

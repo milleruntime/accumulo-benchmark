@@ -1,4 +1,4 @@
-package org.apache.accumulo;
+package org.apache.accumulo.benchmark;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

@@ -1,4 +1,4 @@
-package org.apache.accumulo;
+package org.apache.accumulo.benchmark;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;

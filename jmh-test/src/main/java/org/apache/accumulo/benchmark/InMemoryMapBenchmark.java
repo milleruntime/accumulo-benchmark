@@ -1,8 +1,9 @@
-package org.apache.accumulo;
+package org.apache.accumulo.benchmark;
 
 import java.io.IOException;
 import java.util.SortedMap;
 import org.apache.TestInMemoryStack;
+import org.apache.accumulo.IteratorStackBenchmark;
 import org.apache.accumulo.core.data.Key;
 import org.apache.accumulo.core.data.Range;
 import org.apache.accumulo.core.data.Value;
