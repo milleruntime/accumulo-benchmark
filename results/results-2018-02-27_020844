@@ -1,0 +1,1029 @@
+Running tests with Accumulo Iterator Stack Version: 2.0.0
+Linux 3.10.0-693.17.1.el7.x86_64 #1 SMP Thu Jan 25 20:13:58 UTC 2018
+# JMH 1.18 (released 351 days ago, please consider updating!)
+# VM version: JDK 1.8.0_161, VM 25.161-b14
+# VM invoker: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: org.apache.accumulo.MyBenchmark.seekAllSystemIters10
+
+# Run progress: 0.00% complete, ETA 00:14:00
+# Fork: 1 of 1
+# Warmup Iteration   1: Generating data and creating Iterator stack version 2.0.0
+103959.738 ops/s
+# Warmup Iteration   2: 188646.606 ops/s
+# Warmup Iteration   3: 189753.264 ops/s
+# Warmup Iteration   4: 161803.804 ops/s
+# Warmup Iteration   5: 189056.716 ops/s
+Iteration   1: 174687.632 ops/s
+Iteration   2: 189758.988 ops/s
+Iteration   3: 190022.806 ops/s
+Iteration   4: 174418.308 ops/s
+Iteration   5: 190105.095 ops/s
+Iteration   6: 190152.813 ops/s
+Iteration   7: 174039.341 ops/s
+Iteration   8: 190428.314 ops/s
+Iteration   9: 173177.109 ops/s
+Iteration  10: 189496.573 ops/s
+Iteration  11: 190425.384 ops/s
+Iteration  12: 178609.413 ops/s
+Iteration  13: 194592.321 ops/s
+Iteration  14: 194856.122 ops/s
+Iteration  15: 177346.111 ops/s
+Iteration  16: 193844.693 ops/s
+Iteration  17: 178141.205 ops/s
+Iteration  18: 194542.739 ops/s
+Iteration  19: 194896.820 ops/s
+Iteration  20: 178455.688 ops/s
+Iteration  21: 194544.792 ops/s
+Iteration  22: 194352.210 ops/s
+Iteration  23: 178845.063 ops/s
+Iteration  24: 194308.519 ops/s
+Iteration  25: 194715.493 ops/s
+Iteration  26: 178587.725 ops/s
+Iteration  27: 194915.697 ops/s
+Iteration  28: 193784.004 ops/s
+Iteration  29: 178257.017 ops/s
+Iteration  30: 194997.059 ops/s
+Iteration  31: 194614.014 ops/s
+Iteration  32: 178385.368 ops/s
+Iteration  33: 194994.102 ops/s
+Iteration  34: 194884.790 ops/s
+Iteration  35: 176600.101 ops/s
+Iteration  36: 194368.902 ops/s
+Iteration  37: 194564.838 ops/s
+Iteration  38: 42870.886 ops/s
+Iteration  39: 194810.071 ops/s
+Iteration  40: 194012.338 ops/s
+Iteration  41: 194540.709 ops/s
+Iteration  42: 194848.790 ops/s
+Iteration  43: 194381.405 ops/s
+Iteration  44: 194539.233 ops/s
+Iteration  45: 194542.806 ops/s
+Iteration  46: 194790.737 ops/s
+Iteration  47: 192393.281 ops/s
+Iteration  48: 193322.189 ops/s
+Iteration  49: 194988.885 ops/s
+Iteration  50: 194196.922 ops/s
+Iteration  51: 194420.878 ops/s
+Iteration  52: 194888.906 ops/s
+Iteration  53: 193521.031 ops/s
+Iteration  54: 194217.215 ops/s
+Iteration  55: 193926.150 ops/s
+Iteration  56: 194908.323 ops/s
+Iteration  57: 194598.319 ops/s
+Iteration  58: 194072.969 ops/s
+Iteration  59: 194570.354 ops/s
+Iteration  60: 194413.151 ops/s
+Iteration  61: 194506.663 ops/s
+Iteration  62: 194531.004 ops/s
+Iteration  63: 194773.477 ops/s
+Iteration  64: 194104.459 ops/s
+Iteration  65: 193735.014 ops/s
+Iteration  66: 194015.925 ops/s
+Iteration  67: 193867.628 ops/s
+Iteration  68: 194651.384 ops/s
+Iteration  69: 194308.507 ops/s
+Iteration  70: 194525.448 ops/s
+Iteration  71: 194814.876 ops/s
+Iteration  72: 194360.567 ops/s
+Iteration  73: 193449.639 ops/s
+Iteration  74: 193836.922 ops/s
+Iteration  75: 193906.435 ops/s
+Iteration  76: 194648.373 ops/s
+Iteration  77: 194557.194 ops/s
+Iteration  78: 194434.208 ops/s
+Iteration  79: 194269.910 ops/s
+Iteration  80: 194959.901 ops/s
+Iteration  81: 193752.071 ops/s
+Iteration  82: 194621.709 ops/s
+Iteration  83: 194455.376 ops/s
+Iteration  84: 194599.761 ops/s
+Iteration  85: 195028.081 ops/s
+Iteration  86: 193218.963 ops/s
+Iteration  87: 194400.937 ops/s
+Iteration  88: 194950.822 ops/s
+Iteration  89: 194411.763 ops/s
+Iteration  90: 194669.511 ops/s
+Iteration  91: 195002.995 ops/s
+Iteration  92: 194339.838 ops/s
+Iteration  93: 193619.739 ops/s
+Iteration  94: 194491.925 ops/s
+Iteration  95: 194352.759 ops/s
+Iteration  96: 194653.462 ops/s
+Iteration  97: 194262.579 ops/s
+Iteration  98: 195045.008 ops/s
+Iteration  99: 193643.556 ops/s
+Iteration 100: 194450.587 ops/s
+
+
+Result "org.apache.accumulo.MyBenchmark.seekAllSystemIters10":
+  190297.217 ±(99.9%) 5439.563 ops/s [Average]
+  (min, avg, max) = (42870.886, 190297.217, 195045.008), stdev = 16038.675
+  CI (99.9%): [184857.654, 195736.780] (assumes normal distribution)
+
+
+# JMH 1.18 (released 351 days ago, please consider updating!)
+# VM version: JDK 1.8.0_161, VM 25.161-b14
+# VM invoker: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: org.apache.accumulo.MyBenchmark.seekAllSystemIters1000
+
+# Run progress: 12.50% complete, ETA 00:13:21
+# Fork: 1 of 1
+# Warmup Iteration   1: Generating data and creating Iterator stack version 2.0.0
+747.280 ops/s
+# Warmup Iteration   2: 866.634 ops/s
+# Warmup Iteration   3: 872.559 ops/s
+# Warmup Iteration   4: 866.062 ops/s
+# Warmup Iteration   5: 870.799 ops/s
+Iteration   1: 870.039 ops/s
+Iteration   2: 835.852 ops/s
+Iteration   3: 873.039 ops/s
+Iteration   4: 875.922 ops/s
+Iteration   5: 875.547 ops/s
+Iteration   6: 871.481 ops/s
+Iteration   7: 874.858 ops/s
+Iteration   8: 872.474 ops/s
+Iteration   9: 872.397 ops/s
+Iteration  10: 875.218 ops/s
+Iteration  11: 874.052 ops/s
+Iteration  12: 874.236 ops/s
+Iteration  13: 876.131 ops/s
+Iteration  14: 875.105 ops/s
+Iteration  15: 876.575 ops/s
+Iteration  16: 876.746 ops/s
+Iteration  17: 876.086 ops/s
+Iteration  18: 872.513 ops/s
+Iteration  19: 873.197 ops/s
+Iteration  20: 868.709 ops/s
+Iteration  21: 874.546 ops/s
+Iteration  22: 874.103 ops/s
+Iteration  23: 872.859 ops/s
+Iteration  24: 874.174 ops/s
+Iteration  25: 875.841 ops/s
+Iteration  26: 874.866 ops/s
+Iteration  27: 877.650 ops/s
+Iteration  28: 877.004 ops/s
+Iteration  29: 876.342 ops/s
+Iteration  30: 878.250 ops/s
+Iteration  31: 873.133 ops/s
+Iteration  32: 875.910 ops/s
+Iteration  33: 873.279 ops/s
+Iteration  34: 877.138 ops/s
+Iteration  35: 874.649 ops/s
+Iteration  36: 851.757 ops/s
+Iteration  37: 872.875 ops/s
+Iteration  38: 871.957 ops/s
+Iteration  39: 873.928 ops/s
+Iteration  40: 877.067 ops/s
+Iteration  41: 872.364 ops/s
+Iteration  42: 875.950 ops/s
+Iteration  43: 877.466 ops/s
+Iteration  44: 874.792 ops/s
+Iteration  45: 877.661 ops/s
+Iteration  46: 873.245 ops/s
+Iteration  47: 874.692 ops/s
+Iteration  48: 876.491 ops/s
+Iteration  49: 876.674 ops/s
+Iteration  50: 877.647 ops/s
+Iteration  51: 878.281 ops/s
+Iteration  52: 875.798 ops/s
+Iteration  53: 873.240 ops/s
+Iteration  54: 876.627 ops/s
+Iteration  55: 874.429 ops/s
+Iteration  56: 877.588 ops/s
+Iteration  57: 872.355 ops/s
+Iteration  58: 874.477 ops/s
+Iteration  59: 874.333 ops/s
+Iteration  60: 875.528 ops/s
+Iteration  61: 876.066 ops/s
+Iteration  62: 877.488 ops/s
+Iteration  63: 877.449 ops/s
+Iteration  64: 874.300 ops/s
+Iteration  65: 873.162 ops/s
+Iteration  66: 841.585 ops/s
+Iteration  67: 862.127 ops/s
+Iteration  68: 864.465 ops/s
+Iteration  69: 864.202 ops/s
+Iteration  70: 863.041 ops/s
+Iteration  71: 863.355 ops/s
+Iteration  72: 864.832 ops/s
+Iteration  73: 703.181 ops/s
+Iteration  74: 872.547 ops/s
+Iteration  75: 875.053 ops/s
+Iteration  76: 871.809 ops/s
+Iteration  77: 872.679 ops/s
+Iteration  78: 873.134 ops/s
+Iteration  79: 873.881 ops/s
+Iteration  80: 859.869 ops/s
+Iteration  81: 874.640 ops/s
+Iteration  82: 872.484 ops/s
+Iteration  83: 872.484 ops/s
+Iteration  84: 870.871 ops/s
+Iteration  85: 871.988 ops/s
+Iteration  86: 872.219 ops/s
+Iteration  87: 875.843 ops/s
+Iteration  88: 875.889 ops/s
+Iteration  89: 874.181 ops/s
+Iteration  90: 873.314 ops/s
+Iteration  91: 874.946 ops/s
+Iteration  92: 871.818 ops/s
+Iteration  93: 873.090 ops/s
+Iteration  94: 834.855 ops/s
+Iteration  95: 874.367 ops/s
+Iteration  96: 869.454 ops/s
+Iteration  97: 873.261 ops/s
+Iteration  98: 875.342 ops/s
+Iteration  99: 869.555 ops/s
+Iteration 100: 871.907 ops/s
+
+
+Result "org.apache.accumulo.MyBenchmark.seekAllSystemIters1000":
+  870.539 ±(99.9%) 6.263 ops/s [Average]
+  (min, avg, max) = (703.181, 870.539, 878.281), stdev = 18.467
+  CI (99.9%): [864.276, 876.802] (assumes normal distribution)
+
+
+# JMH 1.18 (released 351 days ago, please consider updating!)
+# VM version: JDK 1.8.0_161, VM 25.161-b14
+# VM invoker: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithCQFilter10
+
+# Run progress: 25.00% complete, ETA 00:11:24
+# Fork: 1 of 1
+# Warmup Iteration   1: Generating data and creating Iterator stack version 2.0.0
+84765.053 ops/s
+# Warmup Iteration   2: 116503.011 ops/s
+# Warmup Iteration   3: 146010.364 ops/s
+# Warmup Iteration   4: 146075.644 ops/s
+# Warmup Iteration   5: 52674.626 ops/s
+Iteration   1: 145239.192 ops/s
+Iteration   2: 145854.296 ops/s
+Iteration   3: 145936.892 ops/s
+Iteration   4: 145955.238 ops/s
+Iteration   5: 145999.060 ops/s
+Iteration   6: 145968.465 ops/s
+Iteration   7: 145587.451 ops/s
+Iteration   8: 146320.424 ops/s
+Iteration   9: 145747.143 ops/s
+Iteration  10: 145898.472 ops/s
+Iteration  11: 146199.571 ops/s
+Iteration  12: 144674.030 ops/s
+Iteration  13: 144668.087 ops/s
+Iteration  14: 144703.099 ops/s
+Iteration  15: 144320.832 ops/s
+Iteration  16: 144485.783 ops/s
+Iteration  17: 144535.837 ops/s
+Iteration  18: 144971.958 ops/s
+Iteration  19: 144519.504 ops/s
+Iteration  20: 143845.208 ops/s
+Iteration  21: 144465.510 ops/s
+Iteration  22: 144292.320 ops/s
+Iteration  23: 144270.173 ops/s
+Iteration  24: 144892.538 ops/s
+Iteration  25: 143591.995 ops/s
+Iteration  26: 144667.502 ops/s
+Iteration  27: 144625.467 ops/s
+Iteration  28: 143485.092 ops/s
+Iteration  29: 144608.934 ops/s
+Iteration  30: 144688.901 ops/s
+Iteration  31: 144940.506 ops/s
+Iteration  32: 144286.282 ops/s
+Iteration  33: 144980.348 ops/s
+Iteration  34: 144108.316 ops/s
+Iteration  35: 144341.599 ops/s
+Iteration  36: 144637.996 ops/s
+Iteration  37: 145035.141 ops/s
+Iteration  38: 144736.541 ops/s
+Iteration  39: 143655.715 ops/s
+Iteration  40: 144452.097 ops/s
+Iteration  41: 144595.029 ops/s
+Iteration  42: 143990.081 ops/s
+Iteration  43: 144792.528 ops/s
+Iteration  44: 144808.530 ops/s
+Iteration  45: 144173.299 ops/s
+Iteration  46: 144740.104 ops/s
+Iteration  47: 144670.685 ops/s
+Iteration  48: 144592.219 ops/s
+Iteration  49: 144601.807 ops/s
+Iteration  50: 145043.757 ops/s
+Iteration  51: 144700.731 ops/s
+Iteration  52: 143911.856 ops/s
+Iteration  53: 144799.090 ops/s
+Iteration  54: 144549.777 ops/s
+Iteration  55: 144605.120 ops/s
+Iteration  56: 144907.043 ops/s
+Iteration  57: 144662.866 ops/s
+Iteration  58: 144051.779 ops/s
+Iteration  59: 144173.192 ops/s
+Iteration  60: 144751.993 ops/s
+Iteration  61: 144954.058 ops/s
+Iteration  62: 144005.415 ops/s
+Iteration  63: 144906.611 ops/s
+Iteration  64: 144326.679 ops/s
+Iteration  65: 144873.184 ops/s
+Iteration  66: 144330.555 ops/s
+Iteration  67: 144707.476 ops/s
+Iteration  68: 145037.655 ops/s
+Iteration  69: 144422.378 ops/s
+Iteration  70: 145011.950 ops/s
+Iteration  71: 144123.558 ops/s
+Iteration  72: 144141.283 ops/s
+Iteration  73: 144939.302 ops/s
+Iteration  74: 144995.179 ops/s
+Iteration  75: 144471.285 ops/s
+Iteration  76: 144655.498 ops/s
+Iteration  77: 144897.731 ops/s
+Iteration  78: 143778.079 ops/s
+Iteration  79: 144143.829 ops/s
+Iteration  80: 144907.101 ops/s
+Iteration  81: 144266.530 ops/s
+Iteration  82: 144695.177 ops/s
+Iteration  83: 144585.417 ops/s
+Iteration  84: 144798.689 ops/s
+Iteration  85: 144049.664 ops/s
+Iteration  86: 144608.137 ops/s
+Iteration  87: 144714.676 ops/s
+Iteration  88: 144663.001 ops/s
+Iteration  89: 144711.028 ops/s
+Iteration  90: 144123.536 ops/s
+Iteration  91: 144462.906 ops/s
+Iteration  92: 144701.505 ops/s
+Iteration  93: 144985.942 ops/s
+Iteration  94: 144768.192 ops/s
+Iteration  95: 144906.567 ops/s
+Iteration  96: 144448.840 ops/s
+Iteration  97: 144332.984 ops/s
+Iteration  98: 144666.953 ops/s
+Iteration  99: 143621.151 ops/s
+Iteration 100: 144931.270 ops/s
+
+
+Result "org.apache.accumulo.MyBenchmark.seekTestWithCQFilter10":
+  144679.860 ±(99.9%) 188.741 ops/s [Average]
+  (min, avg, max) = (143485.092, 144679.860, 146320.424), stdev = 556.508
+  CI (99.9%): [144491.118, 144868.601] (assumes normal distribution)
+
+
+# JMH 1.18 (released 351 days ago, please consider updating!)
+# VM version: JDK 1.8.0_161, VM 25.161-b14
+# VM invoker: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithCQFilter1000
+
+# Run progress: 37.50% complete, ETA 00:09:32
+# Fork: 1 of 1
+# Warmup Iteration   1: Generating data and creating Iterator stack version 2.0.0
+429.390 ops/s
+# Warmup Iteration   2: 598.102 ops/s
+# Warmup Iteration   3: 600.828 ops/s
+# Warmup Iteration   4: 602.993 ops/s
+# Warmup Iteration   5: 601.244 ops/s
+Iteration   1: 601.611 ops/s
+Iteration   2: 602.376 ops/s
+Iteration   3: 598.293 ops/s
+Iteration   4: 600.533 ops/s
+Iteration   5: 564.668 ops/s
+Iteration   6: 601.279 ops/s
+Iteration   7: 595.783 ops/s
+Iteration   8: 598.041 ops/s
+Iteration   9: 597.752 ops/s
+Iteration  10: 596.022 ops/s
+Iteration  11: 595.487 ops/s
+Iteration  12: 602.853 ops/s
+Iteration  13: 599.146 ops/s
+Iteration  14: 602.042 ops/s
+Iteration  15: 601.476 ops/s
+Iteration  16: 602.461 ops/s
+Iteration  17: 600.457 ops/s
+Iteration  18: 602.662 ops/s
+Iteration  19: 602.485 ops/s
+Iteration  20: 601.491 ops/s
+Iteration  21: 602.370 ops/s
+Iteration  22: 601.526 ops/s
+Iteration  23: 599.940 ops/s
+Iteration  24: 600.430 ops/s
+Iteration  25: 600.771 ops/s
+Iteration  26: 602.600 ops/s
+Iteration  27: 600.206 ops/s
+Iteration  28: 602.755 ops/s
+Iteration  29: 601.505 ops/s
+Iteration  30: 601.543 ops/s
+Iteration  31: 596.484 ops/s
+Iteration  32: 600.454 ops/s
+Iteration  33: 601.785 ops/s
+Iteration  34: 602.690 ops/s
+Iteration  35: 601.720 ops/s
+Iteration  36: 602.274 ops/s
+Iteration  37: 601.813 ops/s
+Iteration  38: 600.868 ops/s
+Iteration  39: 602.382 ops/s
+Iteration  40: 602.363 ops/s
+Iteration  41: 601.295 ops/s
+Iteration  42: 598.450 ops/s
+Iteration  43: 600.053 ops/s
+Iteration  44: 599.283 ops/s
+Iteration  45: 600.142 ops/s
+Iteration  46: 601.697 ops/s
+Iteration  47: 602.261 ops/s
+Iteration  48: 600.733 ops/s
+Iteration  49: 600.171 ops/s
+Iteration  50: 600.486 ops/s
+Iteration  51: 601.002 ops/s
+Iteration  52: 602.820 ops/s
+Iteration  53: 602.533 ops/s
+Iteration  54: 601.664 ops/s
+Iteration  55: 601.282 ops/s
+Iteration  56: 602.420 ops/s
+Iteration  57: 601.544 ops/s
+Iteration  58: 602.739 ops/s
+Iteration  59: 602.180 ops/s
+Iteration  60: 601.629 ops/s
+Iteration  61: 602.533 ops/s
+Iteration  62: 598.801 ops/s
+Iteration  63: 599.891 ops/s
+Iteration  64: 602.609 ops/s
+Iteration  65: 599.185 ops/s
+Iteration  66: 602.923 ops/s
+Iteration  67: 601.934 ops/s
+Iteration  68: 601.530 ops/s
+Iteration  69: 599.952 ops/s
+Iteration  70: 600.289 ops/s
+Iteration  71: 601.444 ops/s
+Iteration  72: 602.974 ops/s
+Iteration  73: 601.409 ops/s
+Iteration  74: 602.793 ops/s
+Iteration  75: 602.720 ops/s
+Iteration  76: 601.017 ops/s
+Iteration  77: 602.630 ops/s
+Iteration  78: 601.673 ops/s
+Iteration  79: 602.710 ops/s
+Iteration  80: 602.643 ops/s
+Iteration  81: 598.744 ops/s
+Iteration  82: 488.184 ops/s
+Iteration  83: 600.718 ops/s
+Iteration  84: 602.113 ops/s
+Iteration  85: 601.840 ops/s
+Iteration  86: 602.925 ops/s
+Iteration  87: 600.450 ops/s
+Iteration  88: 600.538 ops/s
+Iteration  89: 600.988 ops/s
+Iteration  90: 600.992 ops/s
+Iteration  91: 600.069 ops/s
+Iteration  92: 603.069 ops/s
+Iteration  93: 601.573 ops/s
+Iteration  94: 602.995 ops/s
+Iteration  95: 602.789 ops/s
+Iteration  96: 602.030 ops/s
+Iteration  97: 600.811 ops/s
+Iteration  98: 602.919 ops/s
+Iteration  99: 596.286 ops/s
+Iteration 100: 603.558 ops/s
+
+
+Result "org.apache.accumulo.MyBenchmark.seekTestWithCQFilter1000":
+  599.630 ±(99.9%) 4.055 ops/s [Average]
+  (min, avg, max) = (488.184, 599.630, 603.558), stdev = 11.957
+  CI (99.9%): [595.575, 603.686] (assumes normal distribution)
+
+
+# JMH 1.18 (released 351 days ago, please consider updating!)
+# VM version: JDK 1.8.0_161, VM 25.161-b14
+# VM invoker: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithCfFilter10
+
+# Run progress: 50.00% complete, ETA 00:07:37
+# Fork: 1 of 1
+# Warmup Iteration   1: Generating data and creating Iterator stack version 2.0.0
+99743.126 ops/s
+# Warmup Iteration   2: 194779.572 ops/s
+# Warmup Iteration   3: 168850.963 ops/s
+# Warmup Iteration   4: 198632.528 ops/s
+# Warmup Iteration   5: 182279.114 ops/s
+Iteration   1: 182790.021 ops/s
+Iteration   2: 198893.374 ops/s
+Iteration   3: 178621.253 ops/s
+Iteration   4: 191964.084 ops/s
+Iteration   5: 181331.371 ops/s
+Iteration   6: 181117.586 ops/s
+Iteration   7: 196739.485 ops/s
+Iteration   8: 181754.354 ops/s
+Iteration   9: 198636.310 ops/s
+Iteration  10: 182165.813 ops/s
+Iteration  11: 198922.781 ops/s
+Iteration  12: 181717.356 ops/s
+Iteration  13: 198312.392 ops/s
+Iteration  14: 182294.485 ops/s
+Iteration  15: 199200.201 ops/s
+Iteration  16: 182551.868 ops/s
+Iteration  17: 198160.093 ops/s
+Iteration  18: 181908.305 ops/s
+Iteration  19: 198460.271 ops/s
+Iteration  20: 182467.688 ops/s
+Iteration  21: 182191.079 ops/s
+Iteration  22: 199002.145 ops/s
+Iteration  23: 80655.981 ops/s
+Iteration  24: 196501.945 ops/s
+Iteration  25: 197937.122 ops/s
+Iteration  26: 198041.633 ops/s
+Iteration  27: 198394.718 ops/s
+Iteration  28: 198943.307 ops/s
+Iteration  29: 198789.081 ops/s
+Iteration  30: 198795.629 ops/s
+Iteration  31: 196773.066 ops/s
+Iteration  32: 198410.978 ops/s
+Iteration  33: 198941.603 ops/s
+Iteration  34: 198499.582 ops/s
+Iteration  35: 199184.404 ops/s
+Iteration  36: 196923.805 ops/s
+Iteration  37: 198938.458 ops/s
+Iteration  38: 198263.476 ops/s
+Iteration  39: 199300.488 ops/s
+Iteration  40: 198747.560 ops/s
+Iteration  41: 199080.010 ops/s
+Iteration  42: 198739.577 ops/s
+Iteration  43: 198577.679 ops/s
+Iteration  44: 197660.436 ops/s
+Iteration  45: 198138.532 ops/s
+Iteration  46: 198815.578 ops/s
+Iteration  47: 198610.377 ops/s
+Iteration  48: 198966.426 ops/s
+Iteration  49: 198760.380 ops/s
+Iteration  50: 198327.740 ops/s
+Iteration  51: 198887.020 ops/s
+Iteration  52: 198851.311 ops/s
+Iteration  53: 198441.502 ops/s
+Iteration  54: 197382.006 ops/s
+Iteration  55: 199254.744 ops/s
+Iteration  56: 197458.122 ops/s
+Iteration  57: 198638.633 ops/s
+Iteration  58: 198811.210 ops/s
+Iteration  59: 199271.644 ops/s
+Iteration  60: 198797.306 ops/s
+Iteration  61: 198920.193 ops/s
+Iteration  62: 198638.531 ops/s
+Iteration  63: 198921.234 ops/s
+Iteration  64: 197522.023 ops/s
+Iteration  65: 197984.435 ops/s
+Iteration  66: 199095.906 ops/s
+Iteration  67: 198365.736 ops/s
+Iteration  68: 199296.570 ops/s
+Iteration  69: 198340.957 ops/s
+Iteration  70: 198999.659 ops/s
+Iteration  71: 198634.569 ops/s
+Iteration  72: 198570.902 ops/s
+Iteration  73: 198802.186 ops/s
+Iteration  74: 198900.353 ops/s
+Iteration  75: 197763.670 ops/s
+Iteration  76: 198279.009 ops/s
+Iteration  77: 198591.980 ops/s
+Iteration  78: 198903.318 ops/s
+Iteration  79: 199363.996 ops/s
+Iteration  80: 198308.528 ops/s
+Iteration  81: 199355.236 ops/s
+Iteration  82: 197537.096 ops/s
+Iteration  83: 198531.577 ops/s
+Iteration  84: 198463.338 ops/s
+Iteration  85: 199340.700 ops/s
+Iteration  86: 198097.609 ops/s
+Iteration  87: 198888.383 ops/s
+Iteration  88: 198745.964 ops/s
+Iteration  89: 198413.909 ops/s
+Iteration  90: 198963.112 ops/s
+Iteration  91: 198683.108 ops/s
+Iteration  92: 198848.490 ops/s
+Iteration  93: 198766.525 ops/s
+Iteration  94: 199292.566 ops/s
+Iteration  95: 197460.480 ops/s
+Iteration  96: 198267.699 ops/s
+Iteration  97: 198622.138 ops/s
+Iteration  98: 198128.327 ops/s
+Iteration  99: 199157.889 ops/s
+Iteration 100: 198454.914 ops/s
+
+
+Result "org.apache.accumulo.MyBenchmark.seekTestWithCfFilter10":
+  195269.382 ±(99.9%) 4352.025 ops/s [Average]
+  (min, avg, max) = (80655.981, 195269.382, 199363.996), stdev = 12832.044
+  CI (99.9%): [190917.357, 199621.407] (assumes normal distribution)
+
+
+# JMH 1.18 (released 351 days ago, please consider updating!)
+# VM version: JDK 1.8.0_161, VM 25.161-b14
+# VM invoker: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithCfFilter1000
+
+# Run progress: 62.50% complete, ETA 00:05:43
+# Fork: 1 of 1
+# Warmup Iteration   1: Generating data and creating Iterator stack version 2.0.0
+697.163 ops/s
+# Warmup Iteration   2: 689.822 ops/s
+# Warmup Iteration   3: 853.536 ops/s
+# Warmup Iteration   4: 851.810 ops/s
+# Warmup Iteration   5: 853.388 ops/s
+Iteration   1: 721.740 ops/s
+Iteration   2: 826.520 ops/s
+Iteration   3: 774.106 ops/s
+Iteration   4: 844.184 ops/s
+Iteration   5: 847.756 ops/s
+Iteration   6: 778.788 ops/s
+Iteration   7: 848.977 ops/s
+Iteration   8: 841.613 ops/s
+Iteration   9: 845.876 ops/s
+Iteration  10: 848.316 ops/s
+Iteration  11: 775.528 ops/s
+Iteration  12: 854.484 ops/s
+Iteration  13: 854.050 ops/s
+Iteration  14: 851.233 ops/s
+Iteration  15: 854.747 ops/s
+Iteration  16: 781.420 ops/s
+Iteration  17: 850.422 ops/s
+Iteration  18: 853.162 ops/s
+Iteration  19: 852.190 ops/s
+Iteration  20: 785.833 ops/s
+Iteration  21: 845.132 ops/s
+Iteration  22: 847.673 ops/s
+Iteration  23: 851.111 ops/s
+Iteration  24: 850.721 ops/s
+Iteration  25: 780.166 ops/s
+Iteration  26: 845.353 ops/s
+Iteration  27: 847.860 ops/s
+Iteration  28: 847.398 ops/s
+Iteration  29: 848.131 ops/s
+Iteration  30: 848.068 ops/s
+Iteration  31: 778.006 ops/s
+Iteration  32: 848.421 ops/s
+Iteration  33: 849.328 ops/s
+Iteration  34: 825.188 ops/s
+Iteration  35: 850.279 ops/s
+Iteration  36: 778.545 ops/s
+Iteration  37: 850.400 ops/s
+Iteration  38: 848.835 ops/s
+Iteration  39: 850.306 ops/s
+Iteration  40: 845.564 ops/s
+Iteration  41: 779.301 ops/s
+Iteration  42: 845.004 ops/s
+Iteration  43: 850.095 ops/s
+Iteration  44: 849.457 ops/s
+Iteration  45: 845.562 ops/s
+Iteration  46: 777.376 ops/s
+Iteration  47: 848.671 ops/s
+Iteration  48: 850.598 ops/s
+Iteration  49: 850.126 ops/s
+Iteration  50: 847.020 ops/s
+Iteration  51: 848.347 ops/s
+Iteration  52: 781.410 ops/s
+Iteration  53: 853.569 ops/s
+Iteration  54: 852.655 ops/s
+Iteration  55: 852.825 ops/s
+Iteration  56: 853.172 ops/s
+Iteration  57: 780.396 ops/s
+Iteration  58: 853.262 ops/s
+Iteration  59: 852.876 ops/s
+Iteration  60: 855.458 ops/s
+Iteration  61: 854.971 ops/s
+Iteration  62: 853.949 ops/s
+Iteration  63: 785.196 ops/s
+Iteration  64: 854.535 ops/s
+Iteration  65: 848.571 ops/s
+Iteration  66: 852.465 ops/s
+Iteration  67: 853.446 ops/s
+Iteration  68: 778.044 ops/s
+Iteration  69: 854.441 ops/s
+Iteration  70: 852.669 ops/s
+Iteration  71: 852.101 ops/s
+Iteration  72: 853.545 ops/s
+Iteration  73: 361.745 ops/s
+Iteration  74: 856.220 ops/s
+Iteration  75: 850.226 ops/s
+Iteration  76: 854.149 ops/s
+Iteration  77: 854.190 ops/s
+Iteration  78: 856.116 ops/s
+Iteration  79: 851.986 ops/s
+Iteration  80: 855.565 ops/s
+Iteration  81: 850.587 ops/s
+Iteration  82: 851.851 ops/s
+Iteration  83: 854.281 ops/s
+Iteration  84: 852.207 ops/s
+Iteration  85: 854.367 ops/s
+Iteration  86: 854.067 ops/s
+Iteration  87: 853.870 ops/s
+Iteration  88: 854.090 ops/s
+Iteration  89: 855.866 ops/s
+Iteration  90: 852.238 ops/s
+Iteration  91: 856.056 ops/s
+Iteration  92: 854.019 ops/s
+Iteration  93: 851.819 ops/s
+Iteration  94: 854.792 ops/s
+Iteration  95: 850.810 ops/s
+Iteration  96: 855.548 ops/s
+Iteration  97: 854.558 ops/s
+Iteration  98: 856.193 ops/s
+Iteration  99: 853.694 ops/s
+Iteration 100: 845.863 ops/s
+
+
+Result "org.apache.accumulo.MyBenchmark.seekTestWithCfFilter1000":
+  834.555 ±(99.9%) 18.756 ops/s [Average]
+  (min, avg, max) = (361.745, 834.555, 856.220), stdev = 55.302
+  CI (99.9%): [815.799, 853.311] (assumes normal distribution)
+
+
+# JMH 1.18 (released 351 days ago, please consider updating!)
+# VM version: JDK 1.8.0_161, VM 25.161-b14
+# VM invoker: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithEmptyAuths10
+
+# Run progress: 75.00% complete, ETA 00:03:49
+# Fork: 1 of 1
+# Warmup Iteration   1: Generating data and creating Iterator stack version 2.0.0
+176524.280 ops/s
+# Warmup Iteration   2: 292660.646 ops/s
+# Warmup Iteration   3: 256663.481 ops/s
+# Warmup Iteration   4: 277591.186 ops/s
+# Warmup Iteration   5: 302352.275 ops/s
+Iteration   1: 277021.025 ops/s
+Iteration   2: 302404.964 ops/s
+Iteration   3: 277568.252 ops/s
+Iteration   4: 277329.095 ops/s
+Iteration   5: 300895.302 ops/s
+Iteration   6: 277257.031 ops/s
+Iteration   7: 300907.408 ops/s
+Iteration   8: 270148.305 ops/s
+Iteration   9: 288006.819 ops/s
+Iteration  10: 273974.408 ops/s
+Iteration  11: 301159.772 ops/s
+Iteration  12: 277425.380 ops/s
+Iteration  13: 278386.081 ops/s
+Iteration  14: 302797.843 ops/s
+Iteration  15: 276290.846 ops/s
+Iteration  16: 302155.775 ops/s
+Iteration  17: 278084.718 ops/s
+Iteration  18: 303156.605 ops/s
+Iteration  19: 278328.918 ops/s
+Iteration  20: 302533.779 ops/s
+Iteration  21: 277050.861 ops/s
+Iteration  22: 302211.175 ops/s
+Iteration  23: 96670.757 ops/s
+Iteration  24: 281820.228 ops/s
+Iteration  25: 283256.296 ops/s
+Iteration  26: 281822.038 ops/s
+Iteration  27: 282181.086 ops/s
+Iteration  28: 283230.128 ops/s
+Iteration  29: 281223.041 ops/s
+Iteration  30: 283125.193 ops/s
+Iteration  31: 281561.819 ops/s
+Iteration  32: 281966.508 ops/s
+Iteration  33: 281937.959 ops/s
+Iteration  34: 282327.588 ops/s
+Iteration  35: 282583.940 ops/s
+Iteration  36: 282725.127 ops/s
+Iteration  37: 282685.105 ops/s
+Iteration  38: 282647.114 ops/s
+Iteration  39: 282091.392 ops/s
+Iteration  40: 283205.187 ops/s
+Iteration  41: 281185.038 ops/s
+Iteration  42: 282099.021 ops/s
+Iteration  43: 281474.512 ops/s
+Iteration  44: 282927.101 ops/s
+Iteration  45: 281864.140 ops/s
+Iteration  46: 281790.547 ops/s
+Iteration  47: 282055.305 ops/s
+Iteration  48: 282687.060 ops/s
+Iteration  49: 281934.764 ops/s
+Iteration  50: 281620.910 ops/s
+Iteration  51: 282017.352 ops/s
+Iteration  52: 282278.015 ops/s
+Iteration  53: 282660.840 ops/s
+Iteration  54: 283162.653 ops/s
+Iteration  55: 282016.316 ops/s
+Iteration  56: 283255.418 ops/s
+Iteration  57: 282446.427 ops/s
+Iteration  58: 282052.158 ops/s
+Iteration  59: 283272.141 ops/s
+Iteration  60: 281217.101 ops/s
+Iteration  61: 282208.168 ops/s
+Iteration  62: 281518.339 ops/s
+Iteration  63: 282735.635 ops/s
+Iteration  64: 281961.619 ops/s
+Iteration  65: 283169.204 ops/s
+Iteration  66: 281873.259 ops/s
+Iteration  67: 282673.047 ops/s
+Iteration  68: 281987.405 ops/s
+Iteration  69: 281437.772 ops/s
+Iteration  70: 281900.459 ops/s
+Iteration  71: 282582.633 ops/s
+Iteration  72: 282352.643 ops/s
+Iteration  73: 282740.388 ops/s
+Iteration  74: 282660.901 ops/s
+Iteration  75: 282777.045 ops/s
+Iteration  76: 282164.332 ops/s
+Iteration  77: 283264.610 ops/s
+Iteration  78: 282515.385 ops/s
+Iteration  79: 281481.433 ops/s
+Iteration  80: 282032.235 ops/s
+Iteration  81: 282189.547 ops/s
+Iteration  82: 281915.310 ops/s
+Iteration  83: 282466.588 ops/s
+Iteration  84: 282572.366 ops/s
+Iteration  85: 282276.571 ops/s
+Iteration  86: 282105.842 ops/s
+Iteration  87: 282769.733 ops/s
+Iteration  88: 281215.446 ops/s
+Iteration  89: 282584.331 ops/s
+Iteration  90: 282079.410 ops/s
+Iteration  91: 283086.016 ops/s
+Iteration  92: 281954.866 ops/s
+Iteration  93: 283283.184 ops/s
+Iteration  94: 282488.766 ops/s
+Iteration  95: 282681.258 ops/s
+Iteration  96: 282647.933 ops/s
+Iteration  97: 283201.381 ops/s
+Iteration  98: 280401.109 ops/s
+Iteration  99: 282220.166 ops/s
+Iteration 100: 282367.447 ops/s
+
+
+Result "org.apache.accumulo.MyBenchmark.seekTestWithEmptyAuths10":
+  281587.155 ±(99.9%) 6681.971 ops/s [Average]
+  (min, avg, max) = (96670.757, 281587.155, 303156.605), stdev = 19701.944
+  CI (99.9%): [274905.184, 288269.126] (assumes normal distribution)
+
+
+# JMH 1.18 (released 351 days ago, please consider updating!)
+# VM version: JDK 1.8.0_161, VM 25.161-b14
+# VM invoker: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 100 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: org.apache.accumulo.MyBenchmark.seekTestWithEmptyAuths1000
+
+# Run progress: 87.50% complete, ETA 00:01:54
+# Fork: 1 of 1
+# Warmup Iteration   1: Generating data and creating Iterator stack version 2.0.0
+1156.996 ops/s
+# Warmup Iteration   2: 1289.790 ops/s
+# Warmup Iteration   3: 1288.240 ops/s
+# Warmup Iteration   4: 1291.970 ops/s
+# Warmup Iteration   5: 1235.918 ops/s
+Iteration   1: 1290.162 ops/s
+Iteration   2: 1292.857 ops/s
+Iteration   3: 1292.107 ops/s
+Iteration   4: 1281.622 ops/s
+Iteration   5: 1284.949 ops/s
+Iteration   6: 1292.049 ops/s
+Iteration   7: 1290.500 ops/s
+Iteration   8: 1290.309 ops/s
+Iteration   9: 1292.424 ops/s
+Iteration  10: 1287.379 ops/s
+Iteration  11: 1292.344 ops/s
+Iteration  12: 1300.269 ops/s
+Iteration  13: 1284.504 ops/s
+Iteration  14: 1299.195 ops/s
+Iteration  15: 1303.408 ops/s
+Iteration  16: 1303.330 ops/s
+Iteration  17: 1306.178 ops/s
+Iteration  18: 1302.655 ops/s
+Iteration  19: 1296.944 ops/s
+Iteration  20: 1304.580 ops/s
+Iteration  21: 1211.756 ops/s
+Iteration  22: 1306.190 ops/s
+Iteration  23: 1298.558 ops/s
+Iteration  24: 1299.310 ops/s
+Iteration  25: 1303.485 ops/s
+Iteration  26: 1302.335 ops/s
+Iteration  27: 1302.136 ops/s
+Iteration  28: 1303.206 ops/s
+Iteration  29: 1305.573 ops/s
+Iteration  30: 1303.735 ops/s
+Iteration  31: 1303.644 ops/s
+Iteration  32: 1304.294 ops/s
+Iteration  33: 1300.971 ops/s
+Iteration  34: 1303.193 ops/s
+Iteration  35: 1301.309 ops/s
+Iteration  36: 1306.037 ops/s
+Iteration  37: 1305.424 ops/s
+Iteration  38: 1301.049 ops/s
+Iteration  39: 1305.798 ops/s
+Iteration  40: 1303.308 ops/s
+Iteration  41: 1275.526 ops/s
+Iteration  42: 1305.398 ops/s
+Iteration  43: 1239.082 ops/s
+Iteration  44: 1293.351 ops/s
+Iteration  45: 1298.448 ops/s
+Iteration  46: 1296.772 ops/s
+Iteration  47: 1295.782 ops/s
+Iteration  48: 1297.360 ops/s
+Iteration  49: 1293.500 ops/s
+Iteration  50: 1298.320 ops/s
+Iteration  51: 1294.538 ops/s
+Iteration  52: 1292.151 ops/s
+Iteration  53: 1291.046 ops/s
+Iteration  54: 1294.631 ops/s
+Iteration  55: 1298.974 ops/s
+Iteration  56: 1298.082 ops/s
+Iteration  57: 1296.293 ops/s
+Iteration  58: 1298.742 ops/s
+Iteration  59: 1297.954 ops/s
+Iteration  60: 1296.806 ops/s
+Iteration  61: 1299.137 ops/s
+Iteration  62: 1290.308 ops/s
+Iteration  63: 1051.437 ops/s
+Iteration  64: 1297.640 ops/s
+Iteration  65: 1299.289 ops/s
+Iteration  66: 1294.188 ops/s
+Iteration  67: 1299.666 ops/s
+Iteration  68: 1294.571 ops/s
+Iteration  69: 1300.184 ops/s
+Iteration  70: 1299.656 ops/s
+Iteration  71: 1295.956 ops/s
+Iteration  72: 1294.486 ops/s
+Iteration  73: 1297.242 ops/s
+Iteration  74: 1289.742 ops/s
+Iteration  75: 1298.663 ops/s
+Iteration  76: 1300.368 ops/s
+Iteration  77: 1297.060 ops/s
+Iteration  78: 1298.878 ops/s
+Iteration  79: 1299.872 ops/s
+Iteration  80: 1287.183 ops/s
+Iteration  81: 1292.249 ops/s
+Iteration  82: 1295.009 ops/s
+Iteration  83: 1297.571 ops/s
+Iteration  84: 1300.643 ops/s
+Iteration  85: 1295.171 ops/s
+Iteration  86: 1301.069 ops/s
+Iteration  87: 1297.642 ops/s
+Iteration  88: 1297.960 ops/s
+Iteration  89: 1300.395 ops/s
+Iteration  90: 1298.094 ops/s
+Iteration  91: 1298.756 ops/s
+Iteration  92: 1294.040 ops/s
+Iteration  93: 1297.582 ops/s
+Iteration  94: 1295.979 ops/s
+Iteration  95: 1300.323 ops/s
+Iteration  96: 1300.127 ops/s
+Iteration  97: 1298.043 ops/s
+Iteration  98: 1300.237 ops/s
+Iteration  99: 1299.894 ops/s
+Iteration 100: 1297.114 ops/s
+
+
+Result "org.apache.accumulo.MyBenchmark.seekTestWithEmptyAuths1000":
+  1293.553 ±(99.9%) 9.192 ops/s [Average]
+  (min, avg, max) = (1051.437, 1293.553, 1306.190), stdev = 27.104
+  CI (99.9%): [1284.360, 1302.745] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:15:16
+
+Benchmark                                Mode  Cnt       Score      Error  Units
+MyBenchmark.seekAllSystemIters10        thrpt  100  190297.217 ± 5439.563  ops/s
+MyBenchmark.seekAllSystemIters1000      thrpt  100     870.539 ±    6.263  ops/s
+MyBenchmark.seekTestWithCQFilter10      thrpt  100  144679.860 ±  188.741  ops/s
+MyBenchmark.seekTestWithCQFilter1000    thrpt  100     599.630 ±    4.055  ops/s
+MyBenchmark.seekTestWithCfFilter10      thrpt  100  195269.382 ± 4352.025  ops/s
+MyBenchmark.seekTestWithCfFilter1000    thrpt  100     834.555 ±   18.756  ops/s
+MyBenchmark.seekTestWithEmptyAuths10    thrpt  100  281587.155 ± 6681.971  ops/s
+MyBenchmark.seekTestWithEmptyAuths1000  thrpt  100    1293.553 ±    9.192  ops/s
